@@ -1,11 +1,15 @@
-# Welcome to your Jupyter Book
+# Biodata Saya
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+## Informasi Pribadi
+- Nama: Mohammad Elghifary
+- NIM: 240411100108
+- Program Studi: Informatika
+- Semester: 4
 
-Check out the content pages bundled with this sample book to see more.
+## Tentang Saya
+Saya adalah mahasiswa Program Studi Informatika yang memiliki minat dalam bidang teknologi, khususnya pada pengolahan data, pemrograman, dan pengembangan sistem. 
+Saat ini saya sedang menempuh semester 4 dan aktif mempelajari berbagai mata kuliah yang berkaitan dengan analisis data dan pengembangan perangkat lunak.
 
-```{tableofcontents}
-```
+Melalui mata kuliah Penambangan Data ini, saya berharap dapat memahami konsep, teknik, dan implementasi data mining secara lebih mendalam serta mampu menerapkannya dalam studi kasus nyata.
+
+Saya juga terus berusaha mengembangkan kemampuan berpikir kritis, problem solving, dan kerja sama tim sebagai bekal untuk dunia kerja maupun pengembangan diri di bidang teknologi informasi.
