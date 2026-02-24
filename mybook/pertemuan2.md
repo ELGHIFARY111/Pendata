@@ -14,11 +14,62 @@ Data ,measurement, dan data processing <br>
 |3. explorasi data(exploratory data analysis / EDA)|mencari pola,tren,korrelasi,atau anomali menggunakan statistik deskriptif dan visualisasi (grafik , histrogram, sactter plot)|
 |4. kualitas data|memeriksa kelengkapan, keakuratan,konsistensi data, misalnya: apakah ada data hilang( missing value )? apakah ada duplikat atau kesalahan input?|
 ## atribut
--nominal / kategorikal
--ordinal
--biner
--numerik:
+- nominal / kategorikal
+- ordinal
+- biner
+- numerik:
     interval-scalled, ratio scalled
+## tugas pertemuan 2
+- eksplorasi data iris 
+- cari data deksriptif data
+- visualisasi data
+
+https://mulaab.github.io/datamining/memahami-data/
+### kode python
+```python
+import pandas as pd
+from scipy import stats
+df = pd.read_csv("IRIS.csv")
+kolom_numerik = df.select_dtypes(include=['number']).columns
+
+for usecolom in kolom_numerik:
+    print("-" * 40)
+    print(f"ANALISIS KOLOM: {usecolom}")
+    print("-" * 40)
+    
+    print("jumlah data  ", df[usecolom].count())
+    print("rata-rata   ", df[usecolom].mean())
+    print("nila minimal ", df[usecolom].min())
+    print("Q1       ", df[usecolom].quantile(0.25))
+    print("Q2          ", df[usecolom].quantile(0.5))
+    print("Q3          ", df[usecolom].quantile(0.75))
+    print("Nilai Max   ", df[usecolom].max())
+    print("kemencengan", "{0:.2f}".format(round(df[usecolom].skew(), 2)))
+    mode_res = stats.mode(df[usecolom], keepdims=True)
+    print("Nilai modus {} dengan jumlah {}".format(mode_res.mode[0], mode_res.count[0]))
+    
+    print("kemencengan          ", "{0:.6f}".format(round(df[usecolom].skew(), 6)))
+    print("Standar Deviasi    ", "{0:.2f}".format(round(df[usecolom].std(), 2)))
+    print("Variansi          ", "{0:.2f}".format(round(df[usecolom].var(), 2)))
+    print("\n")
+col = 'species'
+
+print("-" * 40)
+print(f"ANALISIS KOLOM KATEGORIKAL: {col}")
+print("-" * 40)
+
+print("Jumlah total data  :", df[col].count())
+print("Jumlah spesies unik:", df[col].nunique())
+print("Daftar spesies     :", df[col].unique())
+
+print("\nJumlah data per spesies:")
+print(df[col].value_counts())
+
+modus_spesies = df[col].mode()[0]
+jumlah_modus = df[col].value_counts().max()
+print(f"\nModus              : {modus_spesies}")
+print(f"Jumlah kemunculan  : {jumlah_modus}")
+```
 ## analisis iris
 ----------------------------------------
 ANALISIS KOLOM: sepal_length
@@ -104,3 +155,17 @@ Name: count, dtype: int64<br>
 Modus              : Iris-setosa<br>
 Jumlah kemunculan  : 50 <br>
 <br>
+
+## VISUALISASI
+### column statistic
+![Visualisasi](asset/tm2/i2.png)
+### data table
+![Visualisasi](asset/tm2/i3.png)
+### scatter
+![Visualisasi](asset/tm2/i4.png)
+![Visualisasi](asset/tm2/i5.png)
+### corelation
+![Visualisasi](asset/tm2/i6.png)
+
+
+
