@@ -156,16 +156,57 @@ Modus              : Iris-setosa<br>
 Jumlah kemunculan  : 50 <br>
 <br>
 
-## VISUALISASI
+## VISUALISASI di ORANGE
+![Visualisasi](asset/tm2/i7.png)
+### data table (mentah)
+![Visualisasi](asset/tm2/i3.png)
+### data table (setelah outlier (euclidian))
+![Visualisasi](asset/tm2/i9.png)
+![Visualisasi](asset/tm2/i8.png)
 ### column statistic
 ![Visualisasi](asset/tm2/i2.png)
-### data table
-![Visualisasi](asset/tm2/i3.png)
+
+<p>sebelum outlier</p>
+<p>iris setosa</p>
+
+![Visualisasi](asset/tm2/i10.png)
+<p>iris versicolor</p>
+
+![Visualisasi](asset/tm2/i11.png)
+<p>iris virginica</p>
+
+![Visualisasi](asset/tm2/i12.png)
+<p>setelah outlier</p>
+<p>iris setosa</p>
+
+![Visualisasi](asset/tm2/i13.png)
+<p>iris versicolor</p>
+
+![Visualisasi](asset/tm2/i14.png)
+<p>iris virginica</p>
+
+![Visualisasi](asset/tm2/i15.png)
+
 ### scatter
 ![Visualisasi](asset/tm2/i4.png)
 ![Visualisasi](asset/tm2/i5.png)
 ### corelation
 ![Visualisasi](asset/tm2/i6.png)
 
+### DISTANCES
+#### Distance (data mentah(euclidian))
+![Visualisasi](asset/tm2/i16.png)
+#### Distance (data setelah di outlier(euclidian))
+![Visualisasi](asset/tm2/i17.png)
+#### Distance (data setelah di outlier(manhattan))
+![Visualisasi](asset/tm2/i18.png)
+## kesimpulan
+1. Metrik Jarak Wajib Sesuai Tipe Data: Dataset Iris berisi data angka ukur (numerik). Oleh karena itu, perhitungan jarak atau kemiripan antar-bunga mutlak menggunakan metrik Euclidean (jarak geometris). Penggunaan metrik Jaccard akan gagal karena metrik tersebut hanya untuk data kategorikal.
 
+2. Jarak adalah Kunci Deteksi Outlier: Algoritme pencarian anomali (seperti Local Outlier Factor) bekerja murni dengan mengevaluasi jarak antar-titik data. Hanya dengan metrik Euclidean yang tepat, sistem dapat mengukur jarak ini dan berhasil mendeteksi data pencilan (outlier) yang posisinya tidak wajar dibanding kelompoknya.
+
+3. Karakteristik Jarak Antar Spesies: Berdasarkan evaluasi jarak, spesies Iris-setosa terbukti memiliki jarak yang sangat jauh (terisolasi) dari dua spesies lainnya. Sebaliknya, Iris-versicolor dan Iris-virginica memiliki jarak titik data yang sangat berdekatan dan saling beririsan, menunjukkan kemiripan fisik yang tinggi.
+
+Kesimpulan Inti:<br>
+Seluruh tahap Data Understanding pada kasus ini sangat bergantung pada pengukuran jarak yang tepat (Euclidean). Perhitungan jarak ini menjadi fondasi mutlak untuk menemukan outlier, membersihkan dataset, dan memahami pola pemisahan antar spesies secara akurat sebelum data diproses ke tahap pemodelan.
 

@@ -391,13 +391,21 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-kolom-petal-length">ANALISIS KOLOM: petal_length</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-kolom-petal-width">ANALISIS KOLOM: petal_width</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-kolom-kategorikal-species">ANALISIS KOLOM KATEGORIKAL: species</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi">VISUALISASI</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-di-orange">VISUALISASI di ORANGE</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-table-mentah">data table (mentah)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-table-setelah-outlier-euclidian">data table (setelah outlier (euclidian))</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#column-statistic">column statistic</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-table">data table</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter">scatter</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#corelation">corelation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distances">DISTANCES</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-data-mentah-euclidian">Distance (data mentah(euclidian))</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-data-setelah-di-outlier-euclidian">Distance (data setelah di outlier(euclidian))</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-data-setelah-di-outlier-manhattan">Distance (data setelah di outlier(manhattan))</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">kesimpulan</a></li>
 </ul>
             </nav>
         </div>
@@ -594,15 +602,35 @@ Name: count, dtype: int64<br></p>
 Jumlah kemunculan  : 50 <br>
 <br></p>
 </section>
-<section id="visualisasi">
-<h2>VISUALISASI<a class="headerlink" href="#visualisasi" title="Link to this heading">#</a></h2>
+<section id="visualisasi-di-orange">
+<h2>VISUALISASI di ORANGE<a class="headerlink" href="#visualisasi-di-orange" title="Link to this heading">#</a></h2>
+<p><img alt="Visualisasi" src="_images/i7.png" /></p>
+<section id="data-table-mentah">
+<h3>data table (mentah)<a class="headerlink" href="#data-table-mentah" title="Link to this heading">#</a></h3>
+<p><img alt="Visualisasi" src="_images/i3.png" /></p>
+</section>
+<section id="data-table-setelah-outlier-euclidian">
+<h3>data table (setelah outlier (euclidian))<a class="headerlink" href="#data-table-setelah-outlier-euclidian" title="Link to this heading">#</a></h3>
+<p><img alt="Visualisasi" src="_images/i9.png" />
+<img alt="Visualisasi" src="_images/i8.png" /></p>
+</section>
 <section id="column-statistic">
 <h3>column statistic<a class="headerlink" href="#column-statistic" title="Link to this heading">#</a></h3>
 <p><img alt="Visualisasi" src="_images/i2.png" /></p>
-</section>
-<section id="data-table">
-<h3>data table<a class="headerlink" href="#data-table" title="Link to this heading">#</a></h3>
-<p><img alt="Visualisasi" src="_images/i3.png" /></p>
+<p>sebelum outlier</p>
+<p>iris setosa</p>
+<p><img alt="Visualisasi" src="_images/i10.png" /></p>
+<p>iris versicolor</p>
+<p><img alt="Visualisasi" src="_images/i11.png" /></p>
+<p>iris virginica</p>
+<p><img alt="Visualisasi" src="_images/i12.png" /></p>
+<p>setelah outlier</p>
+<p>iris setosa</p>
+<p><img alt="Visualisasi" src="_images/i13.png" /></p>
+<p>iris versicolor</p>
+<p><img alt="Visualisasi" src="_images/i14.png" /></p>
+<p>iris virginica</p>
+<p><img alt="Visualisasi" src="_images/i15.png" /></p>
 </section>
 <section id="scatter">
 <h3>scatter<a class="headerlink" href="#scatter" title="Link to this heading">#</a></h3>
@@ -613,6 +641,31 @@ Jumlah kemunculan  : 50 <br>
 <h3>corelation<a class="headerlink" href="#corelation" title="Link to this heading">#</a></h3>
 <p><img alt="Visualisasi" src="_images/i6.png" /></p>
 </section>
+<section id="distances">
+<h3>DISTANCES<a class="headerlink" href="#distances" title="Link to this heading">#</a></h3>
+<section id="distance-data-mentah-euclidian">
+<h4>Distance (data mentah(euclidian))<a class="headerlink" href="#distance-data-mentah-euclidian" title="Link to this heading">#</a></h4>
+<p><img alt="Visualisasi" src="_images/i16.png" /></p>
+</section>
+<section id="distance-data-setelah-di-outlier-euclidian">
+<h4>Distance (data setelah di outlier(euclidian))<a class="headerlink" href="#distance-data-setelah-di-outlier-euclidian" title="Link to this heading">#</a></h4>
+<p><img alt="Visualisasi" src="_images/i17.png" /></p>
+</section>
+<section id="distance-data-setelah-di-outlier-manhattan">
+<h4>Distance (data setelah di outlier(manhattan))<a class="headerlink" href="#distance-data-setelah-di-outlier-manhattan" title="Link to this heading">#</a></h4>
+<p><img alt="Visualisasi" src="_images/i18.png" /></p>
+</section>
+</section>
+</section>
+<section id="kesimpulan">
+<h2>kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Metrik Jarak Wajib Sesuai Tipe Data: Dataset Iris berisi data angka ukur (numerik). Oleh karena itu, perhitungan jarak atau kemiripan antar-bunga mutlak menggunakan metrik Euclidean (jarak geometris). Penggunaan metrik Jaccard akan gagal karena metrik tersebut hanya untuk data kategorikal.</p></li>
+<li><p>Jarak adalah Kunci Deteksi Outlier: Algoritme pencarian anomali (seperti Local Outlier Factor) bekerja murni dengan mengevaluasi jarak antar-titik data. Hanya dengan metrik Euclidean yang tepat, sistem dapat mengukur jarak ini dan berhasil mendeteksi data pencilan (outlier) yang posisinya tidak wajar dibanding kelompoknya.</p></li>
+<li><p>Karakteristik Jarak Antar Spesies: Berdasarkan evaluasi jarak, spesies Iris-setosa terbukti memiliki jarak yang sangat jauh (terisolasi) dari dua spesies lainnya. Sebaliknya, Iris-versicolor dan Iris-virginica memiliki jarak titik data yang sangat berdekatan dan saling beririsan, menunjukkan kemiripan fisik yang tinggi.</p></li>
+</ol>
+<p>Kesimpulan Inti:<br>
+Seluruh tahap Data Understanding pada kasus ini sangat bergantung pada pengukuran jarak yang tepat (Euclidean). Perhitungan jarak ini menjadi fondasi mutlak untuk menemukan outlier, membersihkan dataset, dan memahami pola pemisahan antar spesies secara akurat sebelum data diproses ke tahap pemodelan.</p>
 </section>
 </section>
 
@@ -693,13 +746,21 @@ Jumlah kemunculan  : 50 <br>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-kolom-petal-length">ANALISIS KOLOM: petal_length</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-kolom-petal-width">ANALISIS KOLOM: petal_width</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-kolom-kategorikal-species">ANALISIS KOLOM KATEGORIKAL: species</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi">VISUALISASI</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-di-orange">VISUALISASI di ORANGE</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-table-mentah">data table (mentah)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-table-setelah-outlier-euclidian">data table (setelah outlier (euclidian))</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#column-statistic">column statistic</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-table">data table</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter">scatter</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#corelation">corelation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distances">DISTANCES</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-data-mentah-euclidian">Distance (data mentah(euclidian))</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-data-setelah-di-outlier-euclidian">Distance (data setelah di outlier(euclidian))</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-data-setelah-di-outlier-manhattan">Distance (data setelah di outlier(manhattan))</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">kesimpulan</a></li>
 </ul>
   </nav></div>
 
