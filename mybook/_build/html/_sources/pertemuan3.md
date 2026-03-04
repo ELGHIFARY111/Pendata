@@ -186,7 +186,9 @@ Perbedaan antara fitur dan label dapat dijelaskan sebagai berikut:
 - Fitur dapat berjumlah lebih dari satu, sedangkan label biasanya hanya satu dalam satu model prediksi.
 
 Pemahaman mengenai perbedaan fitur dan label sangat penting karena menentukan jenis metode analisis yang akan digunakan, seperti klasifikasi, regresi, atau clustering.
+## iris
 
+![Visualisasi](asset/tm3/i37.png)
 ## data campuran
 ### data mentah
 ![Visualisasi](asset/tm3/i24.png)
