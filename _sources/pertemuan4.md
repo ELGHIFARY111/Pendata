@@ -146,14 +146,14 @@ $$d_{\text{num}} = \sqrt{ \frac{\sum (z_1 - z_2)^2}{n_{\text{numeric}}} }$$
 Ketiga hasil di atas dijumlahkan, kemudian dibagi dengan total elemen pembentuk (11 elemen).
 $$d(i,j) = \frac{ \sum \text{Nominal} + \sum \text{Ordinal} + d_{\text{num}} }{11}$$
 atau rumus lengkapnya
-$$
+```
 =(
   (T2<>$T$41) + (U2<>$U$41) + (V2<>$V$41) + (W2<>$W$41) +
   (Z2<>$Z$41) + (AA2<>$AA$41) + (AB2<>$AB$41) + (AC2<>$AC$41) +
   ABS(X2-$X$41) +
   SQRT(SUMXMY2(AD2:AI2, $AD$41:$AI$41) / 6)
 ) / 10
-$$
+```
 > **⚠️ Aturan Penting Excel:** Gabungkan ketiga rumus A, B, dan C di atas ke dalam satu sel panjang di kolom **"Jarak"**, lalu bagi dengan 11. Jangan lupa untuk **mengeluarkan/menghapus** sel kolom target yang sedang diprediksi agar tidak terjadi *error*.
 > Setelah rumus jarak ditarik ke bawah, *Copy > Paste Special as Values*, lalu **Sort** dari *Smallest to Largest*.
 

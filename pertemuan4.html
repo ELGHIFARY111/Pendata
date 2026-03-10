@@ -570,16 +570,16 @@ $<span class="math notranslate nohighlight">\(d_{\text{num}} = \sqrt{ \frac{\sum
 </ul>
 <p><strong>PENGGABUNGAN AKHIR (TOTAL JARAK):</strong>
 Ketiga hasil di atas dijumlahkan, kemudian dibagi dengan total elemen pembentuk (11 elemen).
-$<span class="math notranslate nohighlight">\(d(i,j) = \frac{ \sum \text{Nominal} + \sum \text{Ordinal} + d_{\text{num}} }{11}\)</span><span class="math notranslate nohighlight">\(
-atau rumus lengkapnya
-\)</span><span class="math notranslate nohighlight">\(
-=(
-  (T2&lt;&gt;\)</span>T<span class="math notranslate nohighlight">\(41) + (U2&lt;&gt;\)</span>U<span class="math notranslate nohighlight">\(41) + (V2&lt;&gt;\)</span>V<span class="math notranslate nohighlight">\(41) + (W2&lt;&gt;\)</span>W<span class="math notranslate nohighlight">\(41) +
-  (Z2&lt;&gt;\)</span>Z<span class="math notranslate nohighlight">\(41) + (AA2&lt;&gt;\)</span>AA<span class="math notranslate nohighlight">\(41) + (AB2&lt;&gt;\)</span>AB<span class="math notranslate nohighlight">\(41) + (AC2&lt;&gt;\)</span>AC<span class="math notranslate nohighlight">\(41) +
-  ABS(X2-\)</span>X<span class="math notranslate nohighlight">\(41) +
-  SQRT(SUMXMY2(AD2:AI2, \)</span>AD<span class="math notranslate nohighlight">\(41:\)</span>AI<span class="math notranslate nohighlight">\(41) / 6)
+$<span class="math notranslate nohighlight">\(d(i,j) = \frac{ \sum \text{Nominal} + \sum \text{Ordinal} + d_{\text{num}} }{11}\)</span>$
+atau rumus lengkapnya</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>=(
+  (T2&lt;&gt;$T$41) + (U2&lt;&gt;$U$41) + (V2&lt;&gt;$V$41) + (W2&lt;&gt;$W$41) +
+  (Z2&lt;&gt;$Z$41) + (AA2&lt;&gt;$AA$41) + (AB2&lt;&gt;$AB$41) + (AC2&lt;&gt;$AC$41) +
+  ABS(X2-$X$41) +
+  SQRT(SUMXMY2(AD2:AI2, $AD$41:$AI$41) / 6)
 ) / 10
-\)</span>$</p>
+</pre></div>
+</div>
 <blockquote>
 <div><p><strong>⚠️ Aturan Penting Excel:</strong> Gabungkan ketiga rumus A, B, dan C di atas ke dalam satu sel panjang di kolom <strong>“Jarak”</strong>, lalu bagi dengan 11. Jangan lupa untuk <strong>mengeluarkan/menghapus</strong> sel kolom target yang sedang diprediksi agar tidak terjadi <em>error</em>.
 Setelah rumus jarak ditarik ke bawah, <em>Copy &gt; Paste Special as Values</em>, lalu <strong>Sort</strong> dari <em>Smallest to Largest</em>.</p>
