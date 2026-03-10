@@ -265,40 +265,44 @@ domain = Domain(vars)
 out_data = Table.from_numpy(domain, matrix)
 print(matrix)
 ```
-![Visualisasi](asset/tm3/i36.png)
+![Visualisasi](asset/tm3/i38.png)
 
-### contoh hitung manual ID 1 dan 2
-#### 1. Perbandingan Data Objek
+## Contoh Hitung Manual Jarak ID 1 dan 2 
+*(Berdasarkan Algoritma Script Mixed Distance Python)*
 
-| Fitur | ID 1 | ID 2 | Tipe Data |
-| --- | --- | --- | --- |
-| Jenis_Kelamin | L | P | Nominal |
-| Program_Studi | SI | SI | Nominal |
-| Status_Pekerjaan | Belum_Bekerja | Penuh_Waktu | Nominal |
-| Tempat_Tinggal | Rumah_Orang_Tua | Rumah_Orang_Tua | Nominal |
-| Memiliki_Laptop | 1 | 1 | Binary |
-| Mengikuti_Kursus_Online | 0 | 1 | Binary |
-| Sudah_Bekerja | 1 | 1 | Binary |
-| Memiliki_Sertifikat | 1 | 1 | Binary |
-| Motivasi_Belajar | Tinggi (3) | Rendah (1) | Ordinal |
-| Kepuasan_Kuliah | Tidak Puas (2) | Sangat Tidak Puas (1) | Ordinal |
-| Nilai_Tes_Potensi | 83 | 72 | Numeric |
-| Suhu_Ruangan_C | 26.8 | 27.7 | Numeric |
-| Usia_Tahun | 18 | 21 | Numeric |
-| Pendapatan_Bulanan | 2.389.947 | 5.398.407 | Numeric |
-| Jam_Belajar_per_Hari | 1.2 | 1.3 | Numeric |
-| Jumlah_Saudara | 1 | 3 | Numeric |
+### 1. Perbandingan Data Objek & Penentuan Tipe
+
+Data di bawah ini mencakup nilai aktual objek serta tipe data yang dikonfigurasi dalam *script* Python. (Catatan: Nilai Min-Max diambil dari keseluruhan dataset).
+
+| Fitur | ID 1 | ID 2 | Tipe Data di Script |
+| :--- | :--- | :--- | :--- |
+| **Jenis_Kelamin** | L | P | Nominal |
+| **Program_Studi** | SI | SI | Nominal |
+| **Status_Pekerjaan** | Belum_Bekerja | Penuh_Waktu | Nominal |
+| **Tempat_Tinggal** | Rumah_Orang_Tua | Rumah_Orang_Tua | Nominal |
+| **Memiliki_Laptop** | 1 | 1 | Binary |
+| **Mengikuti_Kursus_Online** | 0 | 1 | Binary |
+| **Sudah_Bekerja** | 1 | 1 | Binary |
+| **Memiliki_Sertifikat** | 1 | 1 | Binary |
+| **Motivasi_Belajar** | Tinggi (3) | Rendah (1) | Ordinal |
+| **Kepuasan_Kuliah** | Tidak Puas (2) | Sangat Tidak Puas (1) | Ordinal |
+| **Nilai_Tes_Potensi** | 83 | 72 | Numeric |
+| **Suhu_Ruangan_C** | 26.8 | 27.7 | Numeric |
+| **Usia_Tahun** | 18 | 21 | Numeric |
+| **Pendapatan_Bulanan** | 2.389.947 | 5.398.407 | Numeric |
+| **Jam_Belajar_per_Hari** | 1.2 | 1.3 | Numeric |
+| **Jumlah_Saudara** | 1 | 3 | Numeric |
 
 ---
 
-#### 2. Prosedur Perhitungan Jarak Per Atribut ($d_{ij}^{(f)}$)
+### 2. Prosedur Perhitungan Jarak Per Tipe Atribut
 
-##### A. Atribut Nominal & Biner
+Algoritma dalam *script* membagi perhitungan menjadi 3 blok utama, menghasilkan array jarak (`distances`) yang berisi total **11 elemen** (8 Nominal/Biner + 2 Ordinal + 1 Gabungan Numerik).
 
-Menggunakan metode **Simple Matching**:
-
-* Jika nilai sama: $d = 0$
-* Jika nilai berbeda: $d = 1$
+#### A. Atribut Nominal & Binary (Elemen ke 1 - 8)
+Menggunakan metode **Simple Matching**: 
+* $d = 0$ jika nilai sama
+* $d = 1$ jika nilai beda
 
 1. **Jenis_Kelamin**: Beda $\rightarrow$ **1**
 2. **Program_Studi**: Sama $\rightarrow$ **0**
@@ -309,67 +313,54 @@ Menggunakan metode **Simple Matching**:
 7. **Sudah_Bekerja**: Sama $\rightarrow$ **0**
 8. **Memiliki_Sertifikat**: Sama $\rightarrow$ **0**
 
-###### B. Atribut Ordinal & Numerik
+#### B. Atribut Ordinal (Elemen ke 9 - 10)
+Menggunakan rumus selisih absolut dari rasio peringkat (Min-Max):
+$$d = |z_1 - z_2| \quad \text{dengan} \quad z = \frac{x - 1}{M_f - 1}$$
 
-Menggunakan **Normalisasi Min-Max** untuk mendapatkan skala interval $[0, 1]$ sebelum menghitung selisih absolut.
+9. **Motivasi_Belajar** ($M_f = 3$):
+   * $z_1 = (3-1)/(3-1) = 1.0$
+   * $z_2 = (1-1)/(3-1) = 0.0$
+   * Jarak: $|1.0 - 0.0| =$ **1.0**
 
-Rumus: $z_{if} = \frac{x_{if} - \text{min}_f}{\text{max}_f - \text{min}_f}$ dan $d_{ij}^{(f)} = |z_{if} - z_{jf}|$
+10. **Kepuasan_Kuliah** ($M_f = 5$):
+    * $z_1 = (2-1)/(5-1) = 0.25$
+    * $z_2 = (1-1)/(5-1) = 0.0$
+    * Jarak: $|0.25 - 0.0| =$ **0.25**
 
-9. **Motivasi_Belajar** (Min: 1, Max: 3):
-* $z_1 = (3-1)/(3-1) = 1.0$
-* $z_2 = (1-1)/(3-1) = 0.0$
-* Jarak: $|1.0 - 0.0| = \mathbf{1.0}$
+#### C. Atribut Numerik (Elemen ke 11 / Gabungan Numerik)
+Seluruh variabel numerik di-Min-Max terlebih dahulu, kemudian dicari selisih kuadratnya $(z_1 - z_2)^2$.
 
+1. **Nilai_Tes_Potensi** (Min: 50, Max: 99):
+   * $z_1 = 0.6735, z_2 = 0.4490 \rightarrow (0.6735 - 0.4490)^2 =$ **0.0504**
+2. **Suhu_Ruangan_C** (Min: 24.0, Max: 29.9):
+   * $z_1 = 0.4746, z_2 = 0.6271 \rightarrow (0.4746 - 0.6271)^2 =$ **0.0233**
+3. **Usia_Tahun** (Min: 18, Max: 25):
+   * $z_1 = 0.0, z_2 = 0.4286 \rightarrow (0.0 - 0.4286)^2 =$ **0.1837**
+4. **Pendapatan_Bulanan** (Min: 1.527.843, Max: 5.977.777):
+   * $z_1 = 0.1937, z_2 = 0.8698 \rightarrow (0.1937 - 0.8698)^2 =$ **0.4571**
+5. **Jam_Belajar_per_Hari** (Min: 1.0, Max: 7.9):
+   * $z_1 = 0.0290, z_2 = 0.0435 \rightarrow (0.0290 - 0.0435)^2 =$ **0.0002**
+6. **Jumlah_Saudara** (Min: 0, Max: 4):
+   * $z_1 = 0.25, z_2 = 0.75 \rightarrow (0.25 - 0.75)^2 =$ **0.2500**
 
-10. **Kepuasan_Kuliah** (Min: 1, Max: 5):
-* $z_1 = (2-1)/(5-1) = 0.25$
-* $z_2 = (1-1)/(5-1) = 0.0$
-* Jarak: $|0.25 - 0.0| = \mathbf{0.25}$
-
-
-11. **Nilai_Tes_Potensi** (Min: 50, Max: 99):
-* Jarak: $|0.6735 - 0.4490| = \mathbf{0.2245}$
-
-
-12. **Suhu_Ruangan_C** (Min: 24.0, Max: 29.9):
-* Jarak: $|0.4746 - 0.6271| = \mathbf{0.1525}$
-
-
-13. **Usia_Tahun** (Min: 18, Max: 25):
-* Jarak: $|0.0 - 0.4286| = \mathbf{0.4286}$
-
-
-14. **Pendapatan_Bulanan** (Min: 1.527.843, Max: 5.977.777):
-* Jarak: $|0.1937 - 0.8698| = \mathbf{0.6761}$
-
-
-15. **Jam_Belajar_per_Hari** (Min: 1.0, Max: 7.9):
-* Jarak: $|0.0290 - 0.0435| = \mathbf{0.0145}$
-
-
-16. **Jumlah_Saudara** (Min: 0, Max: 4):
-* Jarak: $|0.25 - 0.75| = \mathbf{0.5}$
-
-
+Sesuai perintah pada *script* `np.sqrt(num_sq_sum / valid_num_cols)`:
+* **Total Kuadrat** $= 0.0504 + 0.0233 + 0.1837 + 0.4571 + 0.0002 + 0.2500 =$ **0.9647**
+* **Jarak Gabungan Numerik** $= \sqrt{0.9647 / 6} = \sqrt{0.16078} =$ **0.4010**
 
 ---
 
-#### 3. Akumulasi dan Hasil Akhir
+### 3. Akumulasi dan Hasil Akhir
 
-Sesuai rumus penggabungan atribut campuran:
+Sesuai dengan baris akhir pada *script* (`sum(distances) / len(distances)`), seluruh 11 elemen dalam array dijumlahkan, kemudian dibagi dengan total elemen tersebut.
 
+$$d(i,j) = \frac{\sum \text{distances}}{\text{len}(\text{distances})}$$
 
-$$d(i,j) = \frac{\sum_{f=1}^{n} d_{ij}^{(f)}}{n}$$
+**Total Sum (Jumlahan array distances):**
+$1 + 0 + 1 + 0 + 0 + 1 + 0 + 0 + 1.0 + 0.25 + 0.4010 = \mathbf{4.6510}$
 
-**Total Jarak Seluruh Fitur:**
-$1 + 0 + 1 + 0 + 0 + 1 + 0 + 0 + 1.0 + 0.25 + 0.2245 + 0.1525 + 0.4286 + 0.6761 + 0.0145 + 0.5 = \mathbf{6.2462}$
-
-**Mixed Distance:**
-
-
-$$d(1, 2) = \frac{6.2462}{16} = \mathbf{0.390385}$$
+**Mixed Distance Akhir:**
+$$d(1, 2) = \frac{4.6510}{11} = \mathbf{0.4228}$$
 
 ---
-
 **Kesimpulan:**
-Hasil perhitungan manual menunjukkan nilai **0.390385**, yang selaras dengan hasil pada tabel Orange. Hal ini mengonfirmasi bahwa penanganan atribut dilakukan secara konsisten dengan teori normalisasi dan penggabungan bobot rata-rata.
+Perhitungan jarak campuran antar ID 1 dan ID 2 menghasilkan nilai **0.4228**. Nilai ini merepresentasikan integrasi berbagai tipe data (nominal, biner, ordinal, dan numerik) menjadi satu metrik jarak tunggal yang komprehensif.

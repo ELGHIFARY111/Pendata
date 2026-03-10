@@ -1,0 +1,758 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Pertemuan 4 &#8212; Data Mining</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pertemuan4';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Pertemuan 5" href="pertemuan5.html" />
+    <link rel="prev" title="Pertemuan 3" href="pertemuan3.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Data Mining - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Data Mining - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Penambangan data
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pertemuan1.html">Pertemuan 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pertemuan2.html">Pertemuan 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pertemuan3.html">Pertemuan 3</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Pertemuan 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pertemuan5.html">Pertemuan 5</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpertemuan4.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/pertemuan4.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Pertemuan 4</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-k-nearest-neighbor">1. Pengertian K-Nearest Neighbor</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-dasar-knn">Konsep Dasar KNN</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-pra-pemrosesan-pre-processing">2. Tahap Pra-Pemrosesan (Pre-processing)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prosedur-perhitungan-jarak-euclidean">3. Prosedur Perhitungan Jarak (Euclidean)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proses-imputasi-penebakan-nilai">4. Proses Imputasi (Penebakan Nilai)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skenario-a-memprediksi-nilai-numerik-pendapatan-bulanan">Skenario A: Memprediksi Nilai Numerik (<code class="docutils literal notranslate"><span class="pre">Pendapatan_Bulanan</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skenario-b-memprediksi-nilai-kategorik-teks-kepuasan-kuliah-motivasi-belajar">Skenario B: Memprediksi Nilai Kategorik/Teks (<code class="docutils literal notranslate"><span class="pre">Kepuasan_Kuliah</span></code> / <code class="docutils literal notranslate"><span class="pre">Motivasi_Belajar</span></code>)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">5. Kesimpulan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pakai-campuran">Pakai campuran</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-pra-pemrosesan-pre-processing-khusus-mixed-data">2. Tahap Pra-Pemrosesan (Pre-processing) Khusus Mixed Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prosedur-perhitungan-jarak-campuran-mixed-distance">3. Prosedur Perhitungan Jarak Campuran (Mixed Distance)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4. Proses Imputasi (Penebakan Nilai)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#skenario-b-memprediksi-nilai-kategorik-teks-kepuasan-kuliah">Skenario B: Memprediksi Nilai Kategorik/Teks (<code class="docutils literal notranslate"><span class="pre">Kepuasan_Kuliah</span></code>)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5. Kesimpulan</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pertemuan-4">
+<h1>Pertemuan 4<a class="headerlink" href="#pertemuan-4" title="Link to this heading">#</a></h1>
+<section id="pengertian-k-nearest-neighbor">
+<h2>1. Pengertian K-Nearest Neighbor<a class="headerlink" href="#pengertian-k-nearest-neighbor" title="Link to this heading">#</a></h2>
+<p>k-Nearest Neighbor (KNN) adalah salah satu metode dalam data mining dan machine learning yang digunakan untuk klasifikasi maupun prediksi nilai berdasarkan kedekatan jarak antar data.</p>
+<p>Prinsip dasar dari KNN adalah bahwa data yang memiliki karakteristik mirip akan berada pada jarak yang dekat dalam ruang fitur. Oleh karena itu, suatu data baru akan ditentukan kelas atau nilainya berdasarkan <em>k</em> data tetangga terdekat (<em>nearest neighbors</em>) yang sudah diketahui sebelumnya.</p>
+<p>Parameter <em>k</em> menunjukkan jumlah tetangga terdekat yang digunakan dalam proses penentuan keputusan.</p>
+<section id="konsep-dasar-knn">
+<h3>Konsep Dasar KNN<a class="headerlink" href="#konsep-dasar-knn" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Menentukan nilai <em>k</em> (jumlah tetangga terdekat).</p></li>
+<li><p>Menghitung jarak antara data baru dengan seluruh data pada dataset.</p></li>
+<li><p>Mengurutkan jarak dari yang paling kecil.</p></li>
+<li><p>Mengambil <em>k</em> data dengan jarak terdekat.</p></li>
+<li><p>Menentukan kelas atau nilai berdasarkan mayoritas atau rata-rata dari tetangga tersebut.</p></li>
+</ol>
+<p>Terdapat dua jenis tipe data yang diprediksi dalam eksperimen ini:</p>
+<ol class="arabic simple">
+<li><p><strong>Data Numerik</strong> (Contoh: <code class="docutils literal notranslate"><span class="pre">Pendapatan_Bulanan</span></code>) diselesaikan dengan pendekatan <strong>Regresi</strong> (Rata-rata/Mean).</p></li>
+<li><p><strong>Data Kategorik</strong> (Contoh: <code class="docutils literal notranslate"><span class="pre">Kepuasan_Kuliah</span></code>) diselesaikan dengan pendekatan <strong>Klasifikasi</strong> (Suara Terbanyak/Modus).</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="tahap-pra-pemrosesan-pre-processing">
+<h2>2. Tahap Pra-Pemrosesan (Pre-processing)<a class="headerlink" href="#tahap-pra-pemrosesan-pre-processing" title="Link to this heading">#</a></h2>
+<p>Sebelum menghitung kemiripan antar baris data, seluruh fitur harus disamakan skalanya agar tidak ada satu fitur pun yang mendominasi perhitungan jarak (misalnya gaji jutaan rupiah dibandingkan rentang indeks skala 4).</p>
+<p>Metode yang digunakan untuk pra-pemrosesan adalah:</p>
+<ol class="arabic">
+<li><p><strong>Perankingan Kategori (Label Encoding):</strong> Seluruh data yang berupa teks/kategori (seperti <code class="docutils literal notranslate"><span class="pre">Program_Studi</span></code>, <code class="docutils literal notranslate"><span class="pre">Status_Pekerjaan</span></code>, <code class="docutils literal notranslate"><span class="pre">Motivasi_Belajar</span></code>) diubah terlebih dahulu menjadi representasi angka berurutan (ranking).</p>
+<blockquote>
+<div><p><strong>Tips Excel:</strong> Anda bisa menggunakan fungsi <code class="docutils literal notranslate"><span class="pre">=IF()</span></code>, <code class="docutils literal notranslate"><span class="pre">=IFS()</span></code>, atau <code class="docutils literal notranslate"><span class="pre">VLOOKUP</span></code> ke tabel referensi untuk mengubah teks menjadi angka.
+<em>Contoh:</em> <code class="docutils literal notranslate"><span class="pre">=IFS(A2=&quot;Rendah&quot;,</span> <span class="pre">1,</span> <span class="pre">A2=&quot;Sedang&quot;,</span> <span class="pre">2,</span> <span class="pre">A2=&quot;Tinggi&quot;,</span> <span class="pre">3)</span></code></p>
+</div></blockquote>
+</li>
+<li><p><strong>Normalisasi Min-Max:</strong> Setelah seluruh dataset murni berisi angka, seluruh fitur dinormalisasi ke dalam rentang skala 0 hingga 1.</p>
+<p><strong>Rumus Normalisasi Min-Max:</strong>
+$<span class="math notranslate nohighlight">\(z = \frac{x - \text{min}}{\text{max} - \text{min}}\)</span>$</p>
+<blockquote>
+<div><p><strong>Implementasi Rumus Excel (Min-Max):</strong>
+Asumsikan data asli berada di sel <code class="docutils literal notranslate"><span class="pre">D2</span></code> dan keseluruhan data kolom tersebut berada di rentang <code class="docutils literal notranslate"><span class="pre">D$2:D$41</span></code>.
+<code class="docutils literal notranslate"><span class="pre">=</span> <span class="pre">(D2</span> <span class="pre">-</span> <span class="pre">MIN(D$2:D$41))</span> <span class="pre">/</span> <span class="pre">(MAX(D$2:D$41)</span> <span class="pre">-</span> <span class="pre">MIN(D$2:D$41))</span></code>
+<em>(Kunci rentang baris menggunakan simbol <code class="docutils literal notranslate"><span class="pre">$</span></code> agar tidak bergeser saat ditarik ke bawah)</em></p>
+</div></blockquote>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="prosedur-perhitungan-jarak-euclidean">
+<h2>3. Prosedur Perhitungan Jarak (Euclidean)<a class="headerlink" href="#prosedur-perhitungan-jarak-euclidean" title="Link to this heading">#</a></h2>
+<p>Untuk mengukur tingkat kemiripan antara pekerja target (misal ID 40) dengan pekerja lainnya, digunakan metrik <em>Euclidean Distance</em>. Karena semua data sudah dalam format numerik ternormalisasi (0-1), rumus jarak dapat diterapkan secara seragam pada seluruh fitur.</p>
+<p><strong>Rumus jarak Euclidean untuk seluruh fitur (<span class="math notranslate nohighlight">\(n\)</span>):</strong>
+$<span class="math notranslate nohighlight">\(d(i,j) = \sqrt{ \sum_{f=1}^{n} (z_{if} - z_{jf})^2 }\)</span>$</p>
+<blockquote>
+<div><p><strong>Implementasi Rumus Excel (Euclidean Distance):</strong>
+Asumsikan baris referensi/target (ID 40) berada di baris 41 (<code class="docutils literal notranslate"><span class="pre">E$41</span></code> sampai <code class="docutils literal notranslate"><span class="pre">T$41</span></code>) dan baris data pembanding saat ini berada di baris 2 (<code class="docutils literal notranslate"><span class="pre">E2</span></code> sampai <code class="docutils literal notranslate"><span class="pre">T2</span></code>).</p>
+<p><em>Cara Manual:</em>
+<code class="docutils literal notranslate"><span class="pre">=SQRT((E2-E$41)^2</span> <span class="pre">+</span> <span class="pre">(F2-F$41)^2</span> <span class="pre">+</span> <span class="pre">(G2-G$41)^2</span> <span class="pre">+</span> <span class="pre">...)</span></code></p>
+<p><em>Cara Cepat (Array / Sum of Squares):</em>
+<code class="docutils literal notranslate"><span class="pre">=SQRT(SUMXMY2(E$41:T$41,</span> <span class="pre">E2:T2))</span></code></p>
+</div></blockquote>
+<p><strong>Aturan Penting (Variabel Target):</strong> Kolom target yang sedang dicari/ditebak (misalnya kolom normalisasi <code class="docutils literal notranslate"><span class="pre">Kepuasan_Kuliah</span></code> atau <code class="docutils literal notranslate"><span class="pre">Pendapatan_Bulanan</span></code>) <strong>wajib dikeluarkan</strong> dari rumus perhitungan jarak di atas agar tidak menghasilkan <em>error</em> matematis atau <em>circular reference</em>.</p>
+<p><strong>Langkah Lanjutan di Spreadsheet/Excel:</strong></p>
+<ol class="arabic simple">
+<li><p>Masukkan rumus <em>Square Root</em> (<code class="docutils literal notranslate"><span class="pre">SQRT</span></code>) di atas pada kolom baru bernama <strong>“Jarak”</strong>.</p></li>
+<li><p>Lakukan <em>Copy</em> pada kolom Jarak, lalu <strong>Paste Special &gt; Values</strong> untuk membekukan hasil rumus jarak agar menjadi angka statis.</p></li>
+<li><p>Lakukan pengurutan data (<strong>Data &gt; Sort</strong>) berdasarkan kolom Jarak dari nilai Terkecil ke Terbesar (<em>Smallest to Largest</em>).</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="proses-imputasi-penebakan-nilai">
+<h2>4. Proses Imputasi (Penebakan Nilai)<a class="headerlink" href="#proses-imputasi-penebakan-nilai" title="Link to this heading">#</a></h2>
+<p>Setelah data terurut, tetangga terdekat akan berada tepat di bawah baris target (karena baris target memiliki jarak 0 dengan dirinya sendiri). Kita menggunakan <strong>K=5</strong> (5 tetangga terdekat) untuk mengambil keputusan.</p>
+<section id="skenario-a-memprediksi-nilai-numerik-pendapatan-bulanan">
+<h3>Skenario A: Memprediksi Nilai Numerik (<code class="docutils literal notranslate"><span class="pre">Pendapatan_Bulanan</span></code>)<a class="headerlink" href="#skenario-a-memprediksi-nilai-numerik-pendapatan-bulanan" title="Link to this heading">#</a></h3>
+<p>Karena target berupa angka kontinu, prediksi didapatkan dengan menghitung <strong>Nilai Rata-rata (Mean)</strong> dari 5 tetangga terdekat.</p>
+<p><strong>Langkah &amp; Rumus Excel:</strong></p>
+<ol class="arabic simple">
+<li><p>Cek nilai asli (bukan yang dinormalisasi) dari <code class="docutils literal notranslate"><span class="pre">Pendapatan_Bulanan</span></code> 5 baris pertama teratas.</p></li>
+<li><p>Hitung rata-ratanya menggunakan rumus Average. Misal data tersebut ada di sel <code class="docutils literal notranslate"><span class="pre">U2</span></code> sampai <code class="docutils literal notranslate"><span class="pre">U6</span></code>:
+<code class="docutils literal notranslate"><span class="pre">=AVERAGE(U2:U6)</span></code></p></li>
+<li><p>Hasil rata-rata tersebut adalah tebakan akhir untuk mengisi kekosongan pendapatan ID 40.
+<img alt="Visualisasi" src="_images/i40.png" /></p></li>
+</ol>
+</section>
+<section id="skenario-b-memprediksi-nilai-kategorik-teks-kepuasan-kuliah-motivasi-belajar">
+<h3>Skenario B: Memprediksi Nilai Kategorik/Teks (<code class="docutils literal notranslate"><span class="pre">Kepuasan_Kuliah</span></code> / <code class="docutils literal notranslate"><span class="pre">Motivasi_Belajar</span></code>)<a class="headerlink" href="#skenario-b-memprediksi-nilai-kategorik-teks-kepuasan-kuliah-motivasi-belajar" title="Link to this heading">#</a></h3>
+<p>Karena target berupa teks/kategori, prediksi didapatkan dengan mengambil <strong>Suara Terbanyak (Mayoritas/Modus)</strong> dari 5 tetangga terdekat.</p>
+<p><strong>Langkah &amp; Rumus Excel:</strong></p>
+<ol class="arabic simple">
+<li><p>Cek kolom teks asli (misal: <code class="docutils literal notranslate"><span class="pre">Kepuasan_Kuliah</span></code>) dari 5 baris teratas (Misalnya berada di sel <code class="docutils literal notranslate"><span class="pre">V2:V6</span></code>).</p></li>
+<li><p>Hitung frekuensi kemunculan setiap kategori. Anda bisa menghitung manual dengan <code class="docutils literal notranslate"><span class="pre">=COUNTIF(V$2:V$6,</span> <span class="pre">&quot;Puas&quot;)</span></code>, atau langsung mencari teks dengan kemunculan terbanyak menggunakan rumus kombinasi <em>Index-Match-Mode</em>:
+<code class="docutils literal notranslate"><span class="pre">=INDEX(V2:V6,</span> <span class="pre">MATCH(MAX(COUNTIF(V2:V6,</span> <span class="pre">V2:V6)),</span> <span class="pre">COUNTIF(V2:V6,</span> <span class="pre">V2:V6),</span> <span class="pre">0))</span></code></p></li>
+<li><p>Kategori dengan frekuensi terbanyak dipilih sebagai tebakan akhir.</p></li>
+</ol>
+<blockquote>
+<div><p><strong>Penanganan Kasus Seri (Tie-Breaker):</strong>
+Jika dalam 5 tetangga tersebut tidak ditemukan mayoritas mutlak (misal dua kelas sama-sama muncul 2 kali), maka keputusan diambil murni berdasarkan data milik <strong>Tetangga Terdekat Pertama (K=1)</strong>.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="id1">
+<h2><img alt="Visualisasi" src="_images/i39.png" /><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+</section>
+<section id="kesimpulan">
+<h2>5. Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h2>
+<p>Algoritma KNN dapat diterapkan secara efektif untuk menangani <em>Missing Value Imputation</em>. Dengan mengonversi seluruh data kategorik menjadi angka (perankingan) dan menormalisasinya bersama data numerik menggunakan Min-Max, metrik jarak <em>Euclidean</em> dapat menghitung tingkat kemiripan antar baris data secara adil dan konsisten. Pemanfaatan <em>Spreadsheet</em> mempermudah transparansi perhitungan tahapan ini secara manual.</p>
+</section>
+<section id="pakai-campuran">
+<h2>Pakai campuran<a class="headerlink" href="#pakai-campuran" title="Link to this heading">#</a></h2>
+<p><strong>Data Kategorik</strong> (Contoh: <code class="docutils literal notranslate"><span class="pre">Kepuasan_Kuliah</span></code>) diselesaikan dengan pendekatan <strong>Klasifikasi</strong> (Suara Terbanyak/Modus).</p>
+<hr class="docutils" />
+<section id="tahap-pra-pemrosesan-pre-processing-khusus-mixed-data">
+<h3>2. Tahap Pra-Pemrosesan (Pre-processing) Khusus Mixed Data<a class="headerlink" href="#tahap-pra-pemrosesan-pre-processing-khusus-mixed-data" title="Link to this heading">#</a></h3>
+<p>Karena dataset memiliki tipe data campuran, kita tidak bisa langsung menormalisasi semuanya secara serampangan. Data harus dipisah perlakuannya berdasarkan 3 tipe:</p>
+<ol class="arabic simple">
+<li><p>Kolom Bantuan (Mulai baris 2 s/d 51):</p></li>
+<li><p>Ordinal (Motivasi) [X2]: =(MATCH(F2, {“Rendah”,”Sedang”,”Tinggi”}, 0) - 1) / (3 - 1)</p></li>
+<li><p>Numerik (Min-Max) [T2 s/d Y2]:</p>
+<ul class="simple">
+<li><p>AD2 (Nilai_Tes_Potensi): =(L2 - MIN(L<span class="math notranslate nohighlight">\(2:L\)</span>51)) / (MAX(L<span class="math notranslate nohighlight">\(2:L\)</span>51) - MIN(L<span class="math notranslate nohighlight">\(2:L\)</span>51))</p></li>
+<li><p>AE2 (Suhu_Ruangan_C): =(M2 - MIN(M<span class="math notranslate nohighlight">\(2:M\)</span>51)) / (MAX(M<span class="math notranslate nohighlight">\(2:M\)</span>51) - MIN(M<span class="math notranslate nohighlight">\(2:M\)</span>51))</p></li>
+<li><p>AF2 (Usia_Tahun): =(N2 - MIN(N<span class="math notranslate nohighlight">\(2:N\)</span>51)) / (MAX(N<span class="math notranslate nohighlight">\(2:N\)</span>51) - MIN(N<span class="math notranslate nohighlight">\(2:N\)</span>51))</p></li>
+<li><p>AG2 (Pendapatan_Bulanan): =(O2 - MIN(O<span class="math notranslate nohighlight">\(2:O\)</span>51)) / (MAX(O<span class="math notranslate nohighlight">\(2:O\)</span>51) - MIN(O<span class="math notranslate nohighlight">\(2:O\)</span>51))</p></li>
+<li><p>AH2 (Jam_Belajar_per_Hari): =(P2 - MIN(<span class="math notranslate nohighlight">\(P\)</span>2:<span class="math notranslate nohighlight">\(P\)</span>51)) / (MAX(<span class="math notranslate nohighlight">\(P\)</span>2:<span class="math notranslate nohighlight">\(P\)</span>51) - MIN(<span class="math notranslate nohighlight">\(P\)</span>2:<span class="math notranslate nohighlight">\(P\)</span>51))</p></li>
+<li><p>AI2 (Jumlah_Saudara): =(P2 - MIN(P<span class="math notranslate nohighlight">\(2:P\)</span>51)) / (MAX(P<span class="math notranslate nohighlight">\(2:P\)</span>51) - MIN(P<span class="math notranslate nohighlight">\(2:P\)</span>51))</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="prosedur-perhitungan-jarak-campuran-mixed-distance">
+<h3>3. Prosedur Perhitungan Jarak Campuran (Mixed Distance)<a class="headerlink" href="#prosedur-perhitungan-jarak-campuran-mixed-distance" title="Link to this heading">#</a></h3>
+<p>Untuk mengukur tingkat kemiripan antar pekerja, kita menggunakan pendekatan <strong>Mixed Distance</strong>. Algoritma ini memecah perhitungan menjadi 3 blok yang pada akhirnya akan menghasilkan 11 elemen jarak pembentuk.</p>
+<p><strong>A. Blok Nominal &amp; Biner (8 Elemen)</strong>
+Menggunakan <em>Simple Matching</em> (0 jika nilainya sama, 1 jika berbeda).</p>
+<ul class="simple">
+<li><p><strong>💻 Rumus Excel:</strong> data target (ID 40) di <code class="docutils literal notranslate"><span class="pre">E$41:L$41</span></code>. Gunakan rumus  cepat ini untuk langsung menghitung total selisihnya:
+<code class="docutils literal notranslate"><span class="pre">=(T2&lt;&gt;$T$41)+(U2&lt;&gt;$U$41)+(V2&lt;&gt;$V$41)+(W2&lt;&gt;$W$41)+(Z2&lt;&gt;$Z$41)+(AA2&lt;&gt;$AA$41)+(AB2&lt;&gt;$AB$41)+(AC2&lt;&gt;$AC$41)+</span></code></p></li>
+</ul>
+<p><strong>B. Blok Ordinal (2 Elemen)</strong>
+Menggunakan selisih absolut dari rasio peringkatnya (Min-Max dari batas ranking).
+$<span class="math notranslate nohighlight">\(d = |z_1 - z_2| \quad \text{dengan} \quad z = \frac{x - 1}{M_f - 1}\)</span>$</p>
+<ul class="simple">
+<li><p><strong>💻 Rumus Excel:</strong> menggunakan ini.
+<code class="docutils literal notranslate"><span class="pre">ABS(X2-$X$41)</span></code>
+<code class="docutils literal notranslate"><span class="pre">ABS(Y2-$Y$41)</span></code> kolom yang ini  tidak dipakai karena kita akana mencari data di kolom ini.
+<strong>C. Blok Numerik (1 Elemen Gabungan)</strong>
+Seluruh variabel numerik (yang sudah di-Min-Max di tahapan sebelumnya) dicari selisih kuadratnya, dirata-rata sesuai jumlah kolom numerik, lalu diakar-kuadratkan (<em>Root Mean Square</em>).
+$<span class="math notranslate nohighlight">\(d_{\text{num}} = \sqrt{ \frac{\sum (z_1 - z_2)^2}{n_{\text{numeric}}} }\)</span>$</p></li>
+<li><p><strong>💻 Rumus Excel:</strong> dengan cara ini.
+<code class="docutils literal notranslate"><span class="pre">SQRT(SUMXMY2(AD2:AI2,</span> <span class="pre">$AD$41:$AI$41)</span> <span class="pre">/</span> <span class="pre">6)</span></code></p></li>
+</ul>
+<p><strong>PENGGABUNGAN AKHIR (TOTAL JARAK):</strong>
+Ketiga hasil di atas dijumlahkan, kemudian dibagi dengan total elemen pembentuk (11 elemen).
+$<span class="math notranslate nohighlight">\(d(i,j) = \frac{ \sum \text{Nominal} + \sum \text{Ordinal} + d_{\text{num}} }{11}\)</span>$
+atau rumus lengkapnya</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>=(
+  (T2&lt;&gt;$T$41) + (U2&lt;&gt;$U$41) + (V2&lt;&gt;$V$41) + (W2&lt;&gt;$W$41) +
+  (Z2&lt;&gt;$Z$41) + (AA2&lt;&gt;$AA$41) + (AB2&lt;&gt;$AB$41) + (AC2&lt;&gt;$AC$41) +
+  ABS(X2-$X$41) +
+  SQRT(SUMXMY2(AD2:AI2, $AD$41:$AI$41) / 6)
+) / 10
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>⚠️ Aturan Penting Excel:</strong> Gabungkan ketiga rumus A, B, dan C di atas ke dalam satu sel panjang di kolom <strong>“Jarak”</strong>, lalu bagi dengan 11. Jangan lupa untuk <strong>mengeluarkan/menghapus</strong> sel kolom target yang sedang diprediksi agar tidak terjadi <em>error</em>.
+Setelah rumus jarak ditarik ke bawah, <em>Copy &gt; Paste Special as Values</em>, lalu <strong>Sort</strong> dari <em>Smallest to Largest</em>.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="id2">
+<h3>4. Proses Imputasi (Penebakan Nilai)<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>Setelah data terurut dari jarak terkecil (0), tetangga terdekat akan berada tepat di bawah baris target. Kita menggunakan <strong>K=5</strong> (5 tetangga terdekat) untuk mengambil keputusan.</p>
+<section id="skenario-b-memprediksi-nilai-kategorik-teks-kepuasan-kuliah">
+<h4>Skenario B: Memprediksi Nilai Kategorik/Teks (<code class="docutils literal notranslate"><span class="pre">Kepuasan_Kuliah</span></code>)<a class="headerlink" href="#skenario-b-memprediksi-nilai-kategorik-teks-kepuasan-kuliah" title="Link to this heading">#</a></h4>
+<p>Karena target berupa teks/kategori, prediksi didapatkan dengan mengambil <strong>Suara Terbanyak (Mayoritas/Modus)</strong> dari 5 tetangga terdekat.</p>
+<p><strong>Langkah &amp; Rumus Excel:</strong></p>
+<ol class="arabic simple">
+<li><p>Cek kolom teks asli (misal: <code class="docutils literal notranslate"><span class="pre">Kepuasan_Kuliah</span></code>) dari 5 baris teratas (Misal di sel <code class="docutils literal notranslate"><span class="pre">V3:V7</span></code>).</p></li>
+<li><p>Cari teks dengan kemunculan terbanyak menggunakan kombinasi <em>Index-Match-Mode</em>:
+<code class="docutils literal notranslate"><span class="pre">=INDEX(G3:G7,</span> <span class="pre">MATCH(MAX(COUNTIF(G3:G7,</span> <span class="pre">G3:G7)),</span> <span class="pre">COUNTIF(G3:G7,</span> <span class="pre">G3:G7),</span> <span class="pre">0))</span></code></p></li>
+<li><p>Kategori dengan frekuensi terbanyak dipilih sebagai tebakan akhir.</p></li>
+</ol>
+<blockquote>
+<div><p><strong>⚖️ Penanganan Kasus Seri (Tie-Breaker):</strong>
+Jika dalam 5 tetangga tersebut tidak ditemukan mayoritas mutlak (misal dua kelas sama-sama muncul 2 kali), maka keputusan diambil murni berdasarkan data milik <strong>Tetangga Terdekat Pertama (K=1)</strong>.</p>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id3">
+<h3>5. Kesimpulan<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>Algoritma KNN sangat adaptif dalam menangani kasus <em>Missing Value Imputation</em>. Penggunaan <strong>Jarak Campuran (<em>Mixed Distance</em>)</strong> terbukti lebih unggul dibanding <em>Euclidean</em> murni untuk dataset yang memiliki variasi tipe atribut (nominal, ordinal, biner, dan numerik). Dengan memisahkan perlakuan antar tipe data, kita mencegah terjadinya bias skala, sehingga tetangga terdekat (K) yang terpilih benar-benar merepresentasikan profil objek yang paling relevan.</p>
+<p><img alt="Visualisasi" src="_images/i41.png" /></p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pertemuan3.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Pertemuan 3</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="pertemuan5.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Pertemuan 5</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-k-nearest-neighbor">1. Pengertian K-Nearest Neighbor</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-dasar-knn">Konsep Dasar KNN</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-pra-pemrosesan-pre-processing">2. Tahap Pra-Pemrosesan (Pre-processing)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prosedur-perhitungan-jarak-euclidean">3. Prosedur Perhitungan Jarak (Euclidean)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proses-imputasi-penebakan-nilai">4. Proses Imputasi (Penebakan Nilai)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skenario-a-memprediksi-nilai-numerik-pendapatan-bulanan">Skenario A: Memprediksi Nilai Numerik (<code class="docutils literal notranslate"><span class="pre">Pendapatan_Bulanan</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skenario-b-memprediksi-nilai-kategorik-teks-kepuasan-kuliah-motivasi-belajar">Skenario B: Memprediksi Nilai Kategorik/Teks (<code class="docutils literal notranslate"><span class="pre">Kepuasan_Kuliah</span></code> / <code class="docutils literal notranslate"><span class="pre">Motivasi_Belajar</span></code>)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">5. Kesimpulan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pakai-campuran">Pakai campuran</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-pra-pemrosesan-pre-processing-khusus-mixed-data">2. Tahap Pra-Pemrosesan (Pre-processing) Khusus Mixed Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prosedur-perhitungan-jarak-campuran-mixed-distance">3. Prosedur Perhitungan Jarak Campuran (Mixed Distance)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4. Proses Imputasi (Penebakan Nilai)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#skenario-b-memprediksi-nilai-kategorik-teks-kepuasan-kuliah">Skenario B: Memprediksi Nilai Kategorik/Teks (<code class="docutils literal notranslate"><span class="pre">Kepuasan_Kuliah</span></code>)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5. Kesimpulan</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

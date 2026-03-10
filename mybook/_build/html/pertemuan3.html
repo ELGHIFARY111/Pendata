@@ -62,6 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'pertemuan3';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Pertemuan 4" href="pertemuan4.html" />
     <link rel="prev" title="Pertemuan 2" href="pertemuan2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -184,6 +185,8 @@
 <li class="toctree-l1"><a class="reference internal" href="pertemuan1.html">Pertemuan 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pertemuan2.html">Pertemuan 2</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Pertemuan 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pertemuan4.html">Pertemuan 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pertemuan5.html">Pertemuan 5</a></li>
 </ul>
 
     </div>
@@ -409,18 +412,17 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-jaccard">binary (jaccard)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-continuize">using continuize</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-script">python script</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-hitung-manual-id-1-dan-2">contoh hitung manual ID 1 dan 2</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-data-objek">1. Perbandingan Data Objek</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prosedur-perhitungan-jarak-per-atribut-d-ij-f">2. Prosedur Perhitungan Jarak Per Atribut (<span class="math notranslate nohighlight">\(d_{ij}^{(f)}\)</span>)</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#a-atribut-nominal-biner">A. Atribut Nominal &amp; Biner</a><ul class="nav section-nav flex-column">
-<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#b-atribut-ordinal-numerik">B. Atribut Ordinal &amp; Numerik</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-hitung-manual-jarak-id-1-dan-2">Contoh Hitung Manual Jarak ID 1 dan 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-data-objek-penentuan-tipe">1. Perbandingan Data Objek &amp; Penentuan Tipe</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prosedur-perhitungan-jarak-per-tipe-atribut">2. Prosedur Perhitungan Jarak Per Tipe Atribut</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-atribut-nominal-binary-elemen-ke-1-8">A. Atribut Nominal &amp; Binary (Elemen ke 1 - 8)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#b-atribut-ordinal-elemen-ke-9-10">B. Atribut Ordinal (Elemen ke 9 - 10)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c-atribut-numerik-elemen-ke-11-gabungan-numerik">C. Atribut Numerik (Elemen ke 11 / Gabungan Numerik)</a></li>
 </ul>
 </li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#akumulasi-dan-hasil-akhir">3. Akumulasi dan Hasil Akhir</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#akumulasi-dan-hasil-akhir">3. Akumulasi dan Hasil Akhir</a></li>
 </ul>
 </li>
 </ul>
@@ -738,114 +740,118 @@ document.write(`
 <span class="nb">print</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><img alt="Visualisasi" src="_images/i36.png" /></p>
+<p><img alt="Visualisasi" src="_images/i38.png" /></p>
 </section>
-<section id="contoh-hitung-manual-id-1-dan-2">
-<h3>contoh hitung manual ID 1 dan 2<a class="headerlink" href="#contoh-hitung-manual-id-1-dan-2" title="Link to this heading">#</a></h3>
-<section id="perbandingan-data-objek">
-<h4>1. Perbandingan Data Objek<a class="headerlink" href="#perbandingan-data-objek" title="Link to this heading">#</a></h4>
+</section>
+<section id="contoh-hitung-manual-jarak-id-1-dan-2">
+<h2>Contoh Hitung Manual Jarak ID 1 dan 2<a class="headerlink" href="#contoh-hitung-manual-jarak-id-1-dan-2" title="Link to this heading">#</a></h2>
+<p><em>(Berdasarkan Algoritma Script Mixed Distance Python)</em></p>
+<section id="perbandingan-data-objek-penentuan-tipe">
+<h3>1. Perbandingan Data Objek &amp; Penentuan Tipe<a class="headerlink" href="#perbandingan-data-objek-penentuan-tipe" title="Link to this heading">#</a></h3>
+<p>Data di bawah ini mencakup nilai aktual objek serta tipe data yang dikonfigurasi dalam <em>script</em> Python. (Catatan: Nilai Min-Max diambil dari keseluruhan dataset).</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Fitur</p></th>
-<th class="head"><p>ID 1</p></th>
-<th class="head"><p>ID 2</p></th>
-<th class="head"><p>Tipe Data</p></th>
+<tr class="row-odd"><th class="head text-left"><p>Fitur</p></th>
+<th class="head text-left"><p>ID 1</p></th>
+<th class="head text-left"><p>ID 2</p></th>
+<th class="head text-left"><p>Tipe Data di Script</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Jenis_Kelamin</p></td>
-<td><p>L</p></td>
-<td><p>P</p></td>
-<td><p>Nominal</p></td>
+<tr class="row-even"><td class="text-left"><p><strong>Jenis_Kelamin</strong></p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>P</p></td>
+<td class="text-left"><p>Nominal</p></td>
 </tr>
-<tr class="row-odd"><td><p>Program_Studi</p></td>
-<td><p>SI</p></td>
-<td><p>SI</p></td>
-<td><p>Nominal</p></td>
+<tr class="row-odd"><td class="text-left"><p><strong>Program_Studi</strong></p></td>
+<td class="text-left"><p>SI</p></td>
+<td class="text-left"><p>SI</p></td>
+<td class="text-left"><p>Nominal</p></td>
 </tr>
-<tr class="row-even"><td><p>Status_Pekerjaan</p></td>
-<td><p>Belum_Bekerja</p></td>
-<td><p>Penuh_Waktu</p></td>
-<td><p>Nominal</p></td>
+<tr class="row-even"><td class="text-left"><p><strong>Status_Pekerjaan</strong></p></td>
+<td class="text-left"><p>Belum_Bekerja</p></td>
+<td class="text-left"><p>Penuh_Waktu</p></td>
+<td class="text-left"><p>Nominal</p></td>
 </tr>
-<tr class="row-odd"><td><p>Tempat_Tinggal</p></td>
-<td><p>Rumah_Orang_Tua</p></td>
-<td><p>Rumah_Orang_Tua</p></td>
-<td><p>Nominal</p></td>
+<tr class="row-odd"><td class="text-left"><p><strong>Tempat_Tinggal</strong></p></td>
+<td class="text-left"><p>Rumah_Orang_Tua</p></td>
+<td class="text-left"><p>Rumah_Orang_Tua</p></td>
+<td class="text-left"><p>Nominal</p></td>
 </tr>
-<tr class="row-even"><td><p>Memiliki_Laptop</p></td>
-<td><p>1</p></td>
-<td><p>1</p></td>
-<td><p>Binary</p></td>
+<tr class="row-even"><td class="text-left"><p><strong>Memiliki_Laptop</strong></p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>Binary</p></td>
 </tr>
-<tr class="row-odd"><td><p>Mengikuti_Kursus_Online</p></td>
-<td><p>0</p></td>
-<td><p>1</p></td>
-<td><p>Binary</p></td>
+<tr class="row-odd"><td class="text-left"><p><strong>Mengikuti_Kursus_Online</strong></p></td>
+<td class="text-left"><p>0</p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>Binary</p></td>
 </tr>
-<tr class="row-even"><td><p>Sudah_Bekerja</p></td>
-<td><p>1</p></td>
-<td><p>1</p></td>
-<td><p>Binary</p></td>
+<tr class="row-even"><td class="text-left"><p><strong>Sudah_Bekerja</strong></p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>Binary</p></td>
 </tr>
-<tr class="row-odd"><td><p>Memiliki_Sertifikat</p></td>
-<td><p>1</p></td>
-<td><p>1</p></td>
-<td><p>Binary</p></td>
+<tr class="row-odd"><td class="text-left"><p><strong>Memiliki_Sertifikat</strong></p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>Binary</p></td>
 </tr>
-<tr class="row-even"><td><p>Motivasi_Belajar</p></td>
-<td><p>Tinggi (3)</p></td>
-<td><p>Rendah (1)</p></td>
-<td><p>Ordinal</p></td>
+<tr class="row-even"><td class="text-left"><p><strong>Motivasi_Belajar</strong></p></td>
+<td class="text-left"><p>Tinggi (3)</p></td>
+<td class="text-left"><p>Rendah (1)</p></td>
+<td class="text-left"><p>Ordinal</p></td>
 </tr>
-<tr class="row-odd"><td><p>Kepuasan_Kuliah</p></td>
-<td><p>Tidak Puas (2)</p></td>
-<td><p>Sangat Tidak Puas (1)</p></td>
-<td><p>Ordinal</p></td>
+<tr class="row-odd"><td class="text-left"><p><strong>Kepuasan_Kuliah</strong></p></td>
+<td class="text-left"><p>Tidak Puas (2)</p></td>
+<td class="text-left"><p>Sangat Tidak Puas (1)</p></td>
+<td class="text-left"><p>Ordinal</p></td>
 </tr>
-<tr class="row-even"><td><p>Nilai_Tes_Potensi</p></td>
-<td><p>83</p></td>
-<td><p>72</p></td>
-<td><p>Numeric</p></td>
+<tr class="row-even"><td class="text-left"><p><strong>Nilai_Tes_Potensi</strong></p></td>
+<td class="text-left"><p>83</p></td>
+<td class="text-left"><p>72</p></td>
+<td class="text-left"><p>Numeric</p></td>
 </tr>
-<tr class="row-odd"><td><p>Suhu_Ruangan_C</p></td>
-<td><p>26.8</p></td>
-<td><p>27.7</p></td>
-<td><p>Numeric</p></td>
+<tr class="row-odd"><td class="text-left"><p><strong>Suhu_Ruangan_C</strong></p></td>
+<td class="text-left"><p>26.8</p></td>
+<td class="text-left"><p>27.7</p></td>
+<td class="text-left"><p>Numeric</p></td>
 </tr>
-<tr class="row-even"><td><p>Usia_Tahun</p></td>
-<td><p>18</p></td>
-<td><p>21</p></td>
-<td><p>Numeric</p></td>
+<tr class="row-even"><td class="text-left"><p><strong>Usia_Tahun</strong></p></td>
+<td class="text-left"><p>18</p></td>
+<td class="text-left"><p>21</p></td>
+<td class="text-left"><p>Numeric</p></td>
 </tr>
-<tr class="row-odd"><td><p>Pendapatan_Bulanan</p></td>
-<td><p>2.389.947</p></td>
-<td><p>5.398.407</p></td>
-<td><p>Numeric</p></td>
+<tr class="row-odd"><td class="text-left"><p><strong>Pendapatan_Bulanan</strong></p></td>
+<td class="text-left"><p>2.389.947</p></td>
+<td class="text-left"><p>5.398.407</p></td>
+<td class="text-left"><p>Numeric</p></td>
 </tr>
-<tr class="row-even"><td><p>Jam_Belajar_per_Hari</p></td>
-<td><p>1.2</p></td>
-<td><p>1.3</p></td>
-<td><p>Numeric</p></td>
+<tr class="row-even"><td class="text-left"><p><strong>Jam_Belajar_per_Hari</strong></p></td>
+<td class="text-left"><p>1.2</p></td>
+<td class="text-left"><p>1.3</p></td>
+<td class="text-left"><p>Numeric</p></td>
 </tr>
-<tr class="row-odd"><td><p>Jumlah_Saudara</p></td>
-<td><p>1</p></td>
-<td><p>3</p></td>
-<td><p>Numeric</p></td>
+<tr class="row-odd"><td class="text-left"><p><strong>Jumlah_Saudara</strong></p></td>
+<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>3</p></td>
+<td class="text-left"><p>Numeric</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
 <hr class="docutils" />
-<section id="prosedur-perhitungan-jarak-per-atribut-d-ij-f">
-<h4>2. Prosedur Perhitungan Jarak Per Atribut (<span class="math notranslate nohighlight">\(d_{ij}^{(f)}\)</span>)<a class="headerlink" href="#prosedur-perhitungan-jarak-per-atribut-d-ij-f" title="Link to this heading">#</a></h4>
-<section id="a-atribut-nominal-biner">
-<h5>A. Atribut Nominal &amp; Biner<a class="headerlink" href="#a-atribut-nominal-biner" title="Link to this heading">#</a></h5>
+<section id="prosedur-perhitungan-jarak-per-tipe-atribut">
+<h3>2. Prosedur Perhitungan Jarak Per Tipe Atribut<a class="headerlink" href="#prosedur-perhitungan-jarak-per-tipe-atribut" title="Link to this heading">#</a></h3>
+<p>Algoritma dalam <em>script</em> membagi perhitungan menjadi 3 blok utama, menghasilkan array jarak (<code class="docutils literal notranslate"><span class="pre">distances</span></code>) yang berisi total <strong>11 elemen</strong> (8 Nominal/Biner + 2 Ordinal + 1 Gabungan Numerik).</p>
+<section id="a-atribut-nominal-binary-elemen-ke-1-8">
+<h4>A. Atribut Nominal &amp; Binary (Elemen ke 1 - 8)<a class="headerlink" href="#a-atribut-nominal-binary-elemen-ke-1-8" title="Link to this heading">#</a></h4>
 <p>Menggunakan metode <strong>Simple Matching</strong>:</p>
 <ul class="simple">
-<li><p>Jika nilai sama: <span class="math notranslate nohighlight">\(d = 0\)</span></p></li>
-<li><p>Jika nilai berbeda: <span class="math notranslate nohighlight">\(d = 1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(d = 0\)</span> jika nilai sama</p></li>
+<li><p><span class="math notranslate nohighlight">\(d = 1\)</span> jika nilai beda</p></li>
 </ul>
 <ol class="arabic simple">
 <li><p><strong>Jenis_Kelamin</strong>: Beda <span class="math notranslate nohighlight">\(\rightarrow\)</span> <strong>1</strong></p></li>
@@ -857,80 +863,83 @@ document.write(`
 <li><p><strong>Sudah_Bekerja</strong>: Sama <span class="math notranslate nohighlight">\(\rightarrow\)</span> <strong>0</strong></p></li>
 <li><p><strong>Memiliki_Sertifikat</strong>: Sama <span class="math notranslate nohighlight">\(\rightarrow\)</span> <strong>0</strong></p></li>
 </ol>
-<section id="b-atribut-ordinal-numerik">
-<h6>B. Atribut Ordinal &amp; Numerik<a class="headerlink" href="#b-atribut-ordinal-numerik" title="Link to this heading">#</a></h6>
-<p>Menggunakan <strong>Normalisasi Min-Max</strong> untuk mendapatkan skala interval <span class="math notranslate nohighlight">\([0, 1]\)</span> sebelum menghitung selisih absolut.</p>
-<p>Rumus: <span class="math notranslate nohighlight">\(z_{if} = \frac{x_{if} - \text{min}_f}{\text{max}_f - \text{min}_f}\)</span> dan <span class="math notranslate nohighlight">\(d_{ij}^{(f)} = |z_{if} - z_{jf}|\)</span></p>
+</section>
+<section id="b-atribut-ordinal-elemen-ke-9-10">
+<h4>B. Atribut Ordinal (Elemen ke 9 - 10)<a class="headerlink" href="#b-atribut-ordinal-elemen-ke-9-10" title="Link to this heading">#</a></h4>
+<p>Menggunakan rumus selisih absolut dari rasio peringkat (Min-Max):
+$<span class="math notranslate nohighlight">\(d = |z_1 - z_2| \quad \text{dengan} \quad z = \frac{x - 1}{M_f - 1}\)</span>$</p>
 <ol class="arabic simple" start="9">
-<li><p><strong>Motivasi_Belajar</strong> (Min: 1, Max: 3):</p></li>
-</ol>
+<li><p><strong>Motivasi_Belajar</strong> (<span class="math notranslate nohighlight">\(M_f = 3\)</span>):</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(z_1 = (3-1)/(3-1) = 1.0\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(z_2 = (1-1)/(3-1) = 0.0\)</span></p></li>
-<li><p>Jarak: <span class="math notranslate nohighlight">\(|1.0 - 0.0| = \mathbf{1.0}\)</span></p></li>
+<li><p>Jarak: <span class="math notranslate nohighlight">\(|1.0 - 0.0| =\)</span> <strong>1.0</strong></p></li>
 </ul>
-<ol class="arabic simple" start="10">
-<li><p><strong>Kepuasan_Kuliah</strong> (Min: 1, Max: 5):</p></li>
-</ol>
+</li>
+<li><p><strong>Kepuasan_Kuliah</strong> (<span class="math notranslate nohighlight">\(M_f = 5\)</span>):</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(z_1 = (2-1)/(5-1) = 0.25\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(z_2 = (1-1)/(5-1) = 0.0\)</span></p></li>
-<li><p>Jarak: <span class="math notranslate nohighlight">\(|0.25 - 0.0| = \mathbf{0.25}\)</span></p></li>
+<li><p>Jarak: <span class="math notranslate nohighlight">\(|0.25 - 0.0| =\)</span> <strong>0.25</strong></p></li>
 </ul>
-<ol class="arabic simple" start="11">
-<li><p><strong>Nilai_Tes_Potensi</strong> (Min: 50, Max: 99):</p></li>
+</li>
 </ol>
-<ul class="simple">
-<li><p>Jarak: <span class="math notranslate nohighlight">\(|0.6735 - 0.4490| = \mathbf{0.2245}\)</span></p></li>
-</ul>
-<ol class="arabic simple" start="12">
-<li><p><strong>Suhu_Ruangan_C</strong> (Min: 24.0, Max: 29.9):</p></li>
-</ol>
-<ul class="simple">
-<li><p>Jarak: <span class="math notranslate nohighlight">\(|0.4746 - 0.6271| = \mathbf{0.1525}\)</span></p></li>
-</ul>
-<ol class="arabic simple" start="13">
-<li><p><strong>Usia_Tahun</strong> (Min: 18, Max: 25):</p></li>
-</ol>
-<ul class="simple">
-<li><p>Jarak: <span class="math notranslate nohighlight">\(|0.0 - 0.4286| = \mathbf{0.4286}\)</span></p></li>
-</ul>
-<ol class="arabic simple" start="14">
-<li><p><strong>Pendapatan_Bulanan</strong> (Min: 1.527.843, Max: 5.977.777):</p></li>
-</ol>
-<ul class="simple">
-<li><p>Jarak: <span class="math notranslate nohighlight">\(|0.1937 - 0.8698| = \mathbf{0.6761}\)</span></p></li>
-</ul>
-<ol class="arabic simple" start="15">
-<li><p><strong>Jam_Belajar_per_Hari</strong> (Min: 1.0, Max: 7.9):</p></li>
-</ol>
-<ul class="simple">
-<li><p>Jarak: <span class="math notranslate nohighlight">\(|0.0290 - 0.0435| = \mathbf{0.0145}\)</span></p></li>
-</ul>
-<ol class="arabic simple" start="16">
-<li><p><strong>Jumlah_Saudara</strong> (Min: 0, Max: 4):</p></li>
-</ol>
-<ul class="simple">
-<li><p>Jarak: <span class="math notranslate nohighlight">\(|0.25 - 0.75| = \mathbf{0.5}\)</span></p></li>
-</ul>
 </section>
+<section id="c-atribut-numerik-elemen-ke-11-gabungan-numerik">
+<h4>C. Atribut Numerik (Elemen ke 11 / Gabungan Numerik)<a class="headerlink" href="#c-atribut-numerik-elemen-ke-11-gabungan-numerik" title="Link to this heading">#</a></h4>
+<p>Seluruh variabel numerik di-Min-Max terlebih dahulu, kemudian dicari selisih kuadratnya <span class="math notranslate nohighlight">\((z_1 - z_2)^2\)</span>.</p>
+<ol class="arabic simple">
+<li><p><strong>Nilai_Tes_Potensi</strong> (Min: 50, Max: 99):</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(z_1 = 0.6735, z_2 = 0.4490 \rightarrow (0.6735 - 0.4490)^2 =\)</span> <strong>0.0504</strong></p></li>
+</ul>
+</li>
+<li><p><strong>Suhu_Ruangan_C</strong> (Min: 24.0, Max: 29.9):</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(z_1 = 0.4746, z_2 = 0.6271 \rightarrow (0.4746 - 0.6271)^2 =\)</span> <strong>0.0233</strong></p></li>
+</ul>
+</li>
+<li><p><strong>Usia_Tahun</strong> (Min: 18, Max: 25):</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(z_1 = 0.0, z_2 = 0.4286 \rightarrow (0.0 - 0.4286)^2 =\)</span> <strong>0.1837</strong></p></li>
+</ul>
+</li>
+<li><p><strong>Pendapatan_Bulanan</strong> (Min: 1.527.843, Max: 5.977.777):</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(z_1 = 0.1937, z_2 = 0.8698 \rightarrow (0.1937 - 0.8698)^2 =\)</span> <strong>0.4571</strong></p></li>
+</ul>
+</li>
+<li><p><strong>Jam_Belajar_per_Hari</strong> (Min: 1.0, Max: 7.9):</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(z_1 = 0.0290, z_2 = 0.0435 \rightarrow (0.0290 - 0.0435)^2 =\)</span> <strong>0.0002</strong></p></li>
+</ul>
+</li>
+<li><p><strong>Jumlah_Saudara</strong> (Min: 0, Max: 4):</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(z_1 = 0.25, z_2 = 0.75 \rightarrow (0.25 - 0.75)^2 =\)</span> <strong>0.2500</strong></p></li>
+</ul>
+</li>
+</ol>
+<p>Sesuai perintah pada <em>script</em> <code class="docutils literal notranslate"><span class="pre">np.sqrt(num_sq_sum</span> <span class="pre">/</span> <span class="pre">valid_num_cols)</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Total Kuadrat</strong> <span class="math notranslate nohighlight">\(= 0.0504 + 0.0233 + 0.1837 + 0.4571 + 0.0002 + 0.2500 =\)</span> <strong>0.9647</strong></p></li>
+<li><p><strong>Jarak Gabungan Numerik</strong> <span class="math notranslate nohighlight">\(= \sqrt{0.9647 / 6} = \sqrt{0.16078} =\)</span> <strong>0.4010</strong></p></li>
+</ul>
 </section>
 </section>
 <hr class="docutils" />
 <section id="akumulasi-dan-hasil-akhir">
-<h4>3. Akumulasi dan Hasil Akhir<a class="headerlink" href="#akumulasi-dan-hasil-akhir" title="Link to this heading">#</a></h4>
-<p>Sesuai rumus penggabungan atribut campuran:</p>
+<h3>3. Akumulasi dan Hasil Akhir<a class="headerlink" href="#akumulasi-dan-hasil-akhir" title="Link to this heading">#</a></h3>
+<p>Sesuai dengan baris akhir pada <em>script</em> (<code class="docutils literal notranslate"><span class="pre">sum(distances)</span> <span class="pre">/</span> <span class="pre">len(distances)</span></code>), seluruh 11 elemen dalam array dijumlahkan, kemudian dibagi dengan total elemen tersebut.</p>
 <div class="math notranslate nohighlight">
-\[d(i,j) = \frac{\sum_{f=1}^{n} d_{ij}^{(f)}}{n}\]</div>
-<p><strong>Total Jarak Seluruh Fitur:</strong>
-<span class="math notranslate nohighlight">\(1 + 0 + 1 + 0 + 0 + 1 + 0 + 0 + 1.0 + 0.25 + 0.2245 + 0.1525 + 0.4286 + 0.6761 + 0.0145 + 0.5 = \mathbf{6.2462}\)</span></p>
-<p><strong>Mixed Distance:</strong></p>
-<div class="math notranslate nohighlight">
-\[d(1, 2) = \frac{6.2462}{16} = \mathbf{0.390385}\]</div>
+\[d(i,j) = \frac{\sum \text{distances}}{\text{len}(\text{distances})}\]</div>
+<p><strong>Total Sum (Jumlahan array distances):</strong>
+<span class="math notranslate nohighlight">\(1 + 0 + 1 + 0 + 0 + 1 + 0 + 0 + 1.0 + 0.25 + 0.4010 = \mathbf{4.6510}\)</span></p>
+<p><strong>Mixed Distance Akhir:</strong>
+$<span class="math notranslate nohighlight">\(d(1, 2) = \frac{4.6510}{11} = \mathbf{0.4228}\)</span>$</p>
 <hr class="docutils" />
 <p><strong>Kesimpulan:</strong>
-Hasil perhitungan manual menunjukkan nilai <strong>0.390385</strong>, yang selaras dengan hasil pada tabel Orange. Hal ini mengonfirmasi bahwa penanganan atribut dilakukan secara konsisten dengan teori normalisasi dan penggabungan bobot rata-rata.</p>
-</section>
+Perhitungan jarak campuran antar ID 1 dan ID 2 menghasilkan nilai <strong>0.4228</strong>. Nilai ini merepresentasikan integrasi berbagai tipe data (nominal, biner, ordinal, dan numerik) menjadi satu metrik jarak tunggal yang komprehensif.</p>
 </section>
 </section>
 </section>
@@ -973,6 +982,15 @@ Hasil perhitungan manual menunjukkan nilai <strong>0.390385</strong>, yang selar
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Pertemuan 2</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="pertemuan4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Pertemuan 4</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -1020,18 +1038,17 @@ Hasil perhitungan manual menunjukkan nilai <strong>0.390385</strong>, yang selar
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-jaccard">binary (jaccard)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-continuize">using continuize</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-script">python script</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-hitung-manual-id-1-dan-2">contoh hitung manual ID 1 dan 2</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-data-objek">1. Perbandingan Data Objek</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prosedur-perhitungan-jarak-per-atribut-d-ij-f">2. Prosedur Perhitungan Jarak Per Atribut (<span class="math notranslate nohighlight">\(d_{ij}^{(f)}\)</span>)</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#a-atribut-nominal-biner">A. Atribut Nominal &amp; Biner</a><ul class="nav section-nav flex-column">
-<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#b-atribut-ordinal-numerik">B. Atribut Ordinal &amp; Numerik</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-hitung-manual-jarak-id-1-dan-2">Contoh Hitung Manual Jarak ID 1 dan 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-data-objek-penentuan-tipe">1. Perbandingan Data Objek &amp; Penentuan Tipe</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prosedur-perhitungan-jarak-per-tipe-atribut">2. Prosedur Perhitungan Jarak Per Tipe Atribut</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-atribut-nominal-binary-elemen-ke-1-8">A. Atribut Nominal &amp; Binary (Elemen ke 1 - 8)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#b-atribut-ordinal-elemen-ke-9-10">B. Atribut Ordinal (Elemen ke 9 - 10)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c-atribut-numerik-elemen-ke-11-gabungan-numerik">C. Atribut Numerik (Elemen ke 11 / Gabungan Numerik)</a></li>
 </ul>
 </li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#akumulasi-dan-hasil-akhir">3. Akumulasi dan Hasil Akhir</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#akumulasi-dan-hasil-akhir">3. Akumulasi dan Hasil Akhir</a></li>
 </ul>
 </li>
 </ul>
