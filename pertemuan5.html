@@ -57,6 +57,8 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'pertemuan5';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -184,6 +186,7 @@
 <li class="toctree-l1"><a class="reference internal" href="pertemuan3.html">Pertemuan 3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pertemuan4.html">Pertemuan 4</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Pertemuan 5</a></li>
+
 </ul>
 
     </div>
@@ -356,7 +359,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -372,6 +377,39 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Pertemuan 5</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">preprocessing</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#z-score">z score</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-normalisation">min-max normalisation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decimal-scalling">decimal scalling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-values-menyelesaikan-dengan-wknn-manual-code-menghitung-wknn">Missing values : menyelesaikan dengan WKNN (manual) + code menghitung WKNN</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-asli">1. Data Asli</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penghitungan-manual-menggunakan-excel">2. Penghitungan Manual Menggunakan Excel</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-normalisasi-min-max">A. Normalisasi Min-Max</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#b-menghitung-jarak-dan-bobot-tabel-wknn">B. Menghitung Jarak dan Bobot (Tabel WKNN)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c-hasil-akhir-weighted-average">C. Hasil Akhir (Weighted Average)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kode-implementasi-di-python-orange-data-mining">3. Kode Implementasi di Python (Orange Data Mining)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-orange-data-mining">workflow orange data mining</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#data-table-sebelum">data table sebelum</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#data-table-sesudah">data table sesudah</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -383,6 +421,468 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="pertemuan-5">
 <h1>Pertemuan 5<a class="headerlink" href="#pertemuan-5" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="preprocessing">
+<h1>preprocessing<a class="headerlink" href="#preprocessing" title="Link to this heading">#</a></h1>
+<p>Data mentah yang dikumpulkan ke dalam <em>dataset</em> sering kali belum cukup optimal untuk langsung diproses oleh algoritma <em>Data Mining</em>. Atribut asli mungkin dirancang hanya untuk sistem operasional awal dan belum memiliki kekuatan prediktif yang akurat.</p>
+<p>Oleh karena itu, kita perlu melakukan serangkaian manipulasi untuk mentransformasi nilai asli menjadi variabel analitik tanpa membuat atribut baru, melainkan hanya mengubah distribusi nilainya. Tahap ini disebut dengan <strong>Normalisasi Data</strong>.</p>
+<section id="z-score">
+<h2>z score<a class="headerlink" href="#z-score" title="Link to this heading">#</a></h2>
+<p><strong>Konsep:</strong>
+Z-score Normalization (atau Standardisasi) mengubah distribusi data sedemikian rupa sehingga nilai rata-rata (<span class="math notranslate nohighlight">\(\bar{A}\)</span>) menjadi 0 dan simpangan baku (<span class="math notranslate nohighlight">\(\sigma_A\)</span>) menjadi 1.</p>
+<p>Teknik ini sangat berguna ketika nilai minimum atau maksimum dari atribut tidak diketahui, atau ketika data memiliki <em>outliers</em> (pencilan ekstrem) yang dapat merusak skala jika kita menggunakan teknik Min-Max Normalization.</p>
+<p><strong>Rumus Standar:</strong>
+$<span class="math notranslate nohighlight">\(v' = \frac{v - \bar{A}}{\sigma_A}\)</span>$</p>
+<p><em>Keterangan:</em></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(v\)</span> = nilai asli</p></li>
+<li><p><span class="math notranslate nohighlight">\(\bar{A}\)</span> = nilai rata-rata atribut A</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma_A\)</span> = simpangan baku (standard deviation) atribut A</p></li>
+</ul>
+<p><strong>Contoh Hasil Normalisasi:</strong>
+Misalkan kita punya data asli: <code class="docutils literal notranslate"><span class="pre">[10,</span> <span class="pre">20,</span> <span class="pre">30,</span> <span class="pre">40,</span> <span class="pre">100]</span></code>. (Angka 100 adalah <em>outlier</em>).</p>
+<ul class="simple">
+<li><p>Rata-rata (<span class="math notranslate nohighlight">\(\bar{A}\)</span>) = 40</p></li>
+<li><p>Simpangan baku (<span class="math notranslate nohighlight">\(\sigma_A\)</span>) <span class="math notranslate nohighlight">\(\approx\)</span> 31.62</p></li>
+</ul>
+<p>Hasil setelah dinormalisasi:</p>
+<ul class="simple">
+<li><p>10 berubah menjadi <strong>-0.94</strong></p></li>
+<li><p>40 berubah menjadi <strong>0.00</strong> (berada tepat di titik rata-rata)</p></li>
+<li><p>100 berubah menjadi <strong>1.89</strong></p></li>
+</ul>
+<p><strong>Implementasi Kode (Python):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="c1"># Data contoh</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;nilai&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">100</span><span class="p">]})</span>
+
+<span class="c1"># 1. Menggunakan library sklearn</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;z_score_sklearn&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;nilai&#39;</span><span class="p">]])</span>
+
+<span class="c1"># 2. Membuat fungsi sendiri (Manual)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">z_score_manual</span><span class="p">(</span><span class="n">kolom</span><span class="p">):</span>
+    <span class="n">rata_rata</span> <span class="o">=</span> <span class="n">kolom</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">standar_deviasi</span> <span class="o">=</span> <span class="n">kolom</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># ddof=0 untuk perhitungan simpangan baku populasi</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">kolom</span> <span class="o">-</span> <span class="n">rata_rata</span><span class="p">)</span> <span class="o">/</span> <span class="n">standar_deviasi</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;z_score_manual&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">z_score_manual</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;nilai&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Agar kode Z-score tersebut bisa bekerja menyatu dengan data asli di Orange, kita perlu mengubahnya menjadi seperti ini:</p>
+<p><strong>Kode Z-Score Khusus untuk Orange Data Mining</strong>
+Silakan copy-paste kode di bawah ini ke dalam widget Python Script di Orange:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">Orange.data.pandas_compat</span><span class="w"> </span><span class="kn">import</span> <span class="n">table_to_frame</span><span class="p">,</span> <span class="n">table_from_frame</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="c1"># Pastikan ada data yang masuk dari widget sebelumnya</span>
+<span class="k">if</span> <span class="n">in_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1"># 1. Ubah format data Orange (in_data) ke Pandas DataFrame</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">table_to_frame</span><span class="p">(</span><span class="n">in_data</span><span class="p">)</span>
+    
+    <span class="c1"># Deteksi otomatis kolom mana saja yang berisi angka</span>
+    <span class="n">numeric_cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span>
+    
+    <span class="c1"># 2. MENGGUNAKAN SKLEARN (StandardScaler)</span>
+    <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+    
+    <span class="c1"># Lakukan perulangan untuk menormalisasi setiap kolom angka</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">numeric_cols</span><span class="p">:</span>
+        <span class="c1"># Kita buat kolom baru dengan akhiran &#39;_zscore&#39; agar data asli tidak hilang</span>
+        <span class="n">df</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">_zscore&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="n">col</span><span class="p">]])</span>
+        
+    <span class="c1"># 3. Ubah kembali Pandas DataFrame menjadi format tabel Orange (out_data)</span>
+    <span class="n">out_data</span> <span class="o">=</span> <span class="n">table_from_frame</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="Visualisasi" src="_images/i46.png" /></p>
+</section>
+<section id="min-max-normalisation">
+<h2>min-max normalisation<a class="headerlink" href="#min-max-normalisation" title="Link to this heading">#</a></h2>
+<p><strong>Konsep:</strong>
+Min-Max Normalization bertujuan untuk mengubah skala semua nilai numerik dari suatu atribut ke dalam rentang spesifik (tertentu), yang paling umum adalah antara <strong>0 sampai 1</strong> atau <strong>-1 sampai 1</strong>.</p>
+<p>Teknik ini paling sering digunakan untuk menyamakan skala data sebelum dimasukkan ke dalam algoritma <em>machine learning</em> berbasis jarak (seperti K-Nearest Neighbors) agar atribut dengan nilai asli yang besar tidak mendominasi atribut bernilai kecil secara tidak adil dalam perhitungan jarak. Teknik ini juga sering dipakai dalam <em>Artificial Neural Networks</em> (ANN) untuk mempercepat proses konvergensi.</p>
+<p><strong>Rumus Umum:</strong>
+$<span class="math notranslate nohighlight">\(v' = \frac{v - min_A}{max_A - min_A} (new\_max_A - new\_min_A) + new\_min_A\)</span>$</p>
+<p><em>Catatan: Jika rentang barunya adalah [0, 1], maka rumusnya dapat disederhanakan menjadi:</em>
+$<span class="math notranslate nohighlight">\(v' = \frac{v - min_A}{max_A - min_A}\)</span>$</p>
+<p><strong>Contoh Hasil Normalisasi:</strong>
+Menggunakan data asli yang sama: <code class="docutils literal notranslate"><span class="pre">[10,</span> <span class="pre">20,</span> <span class="pre">30,</span> <span class="pre">40,</span> <span class="pre">100]</span></code>. Rentang baru yang diinginkan adalah 0 sampai 1.</p>
+<ul class="simple">
+<li><p>Nilai minimum (<span class="math notranslate nohighlight">\(min_A\)</span>) = 10</p></li>
+<li><p>Nilai maksimum (<span class="math notranslate nohighlight">\(max_A\)</span>) = 100</p></li>
+</ul>
+<p>Hasil setelah dinormalisasi:</p>
+<ul class="simple">
+<li><p>10 berubah menjadi <strong>0.0</strong> (batas bawah)</p></li>
+<li><p>40 berubah menjadi <strong>0.33</strong> (hasil dari <span class="math notranslate nohighlight">\((40 - 10) / 90\)</span>)</p></li>
+<li><p>100 berubah menjadi <strong>1.0</strong> (batas atas)</p></li>
+</ul>
+<p><strong>Implementasi Kode (Python):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MinMaxScaler</span>
+
+<span class="c1"># Data contoh (melanjutkan data sebelumnya)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;nilai&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">100</span><span class="p">]})</span>
+
+<span class="c1"># 1. Menggunakan library sklearn</span>
+<span class="c1"># Secara default, MinMaxScaler menggunakan rentang (0, 1)</span>
+<span class="n">minmax_scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">(</span><span class="n">feature_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;minmax_sklearn&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">minmax_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;nilai&#39;</span><span class="p">]])</span>
+
+<span class="c1"># 2. Membuat fungsi sendiri (Manual)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">minmax_manual</span><span class="p">(</span><span class="n">kolom</span><span class="p">,</span> <span class="n">new_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">new_max</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">nilai_min</span> <span class="o">=</span> <span class="n">kolom</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+    <span class="n">nilai_max</span> <span class="o">=</span> <span class="n">kolom</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">((</span><span class="n">kolom</span> <span class="o">-</span> <span class="n">nilai_min</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">nilai_max</span> <span class="o">-</span> <span class="n">nilai_min</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="n">new_max</span> <span class="o">-</span> <span class="n">new_min</span><span class="p">)</span> <span class="o">+</span> <span class="n">new_min</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;minmax_manual&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">minmax_manual</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;nilai&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Implementasi Kode (Orange Data Mining)</strong>
+Kode ini digunakan di dalam widget Python Script pada Orange untuk memproses data dari tabel yang masuk (in_data).</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">Orange.data.pandas_compat</span><span class="w"> </span><span class="kn">import</span> <span class="n">table_to_frame</span><span class="p">,</span> <span class="n">table_from_frame</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MinMaxScaler</span>
+
+<span class="k">if</span> <span class="n">in_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1"># 1. Ubah format tabel Orange ke Pandas DataFrame</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">table_to_frame</span><span class="p">(</span><span class="n">in_data</span><span class="p">)</span>
+    
+    <span class="c1"># Deteksi otomatis kolom numerik</span>
+    <span class="n">numeric_cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span>
+    
+    <span class="c1"># 2. Proses normalisasi menggunakan sklearn</span>
+    <span class="n">minmax_scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">(</span><span class="n">feature_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">numeric_cols</span><span class="p">:</span>
+        <span class="c1"># Membuat kolom baru dengan akhiran &#39;_minmax&#39;</span>
+        <span class="n">df</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">_minmax&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">minmax_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="n">col</span><span class="p">]])</span>
+    <span class="c1"># 3. Kembalikan data ke format Orange agar bisa diteruskan ke widget Data Table</span>
+    <span class="n">out_data</span> <span class="o">=</span> <span class="n">table_from_frame</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="Visualisasi" src="_images/i47.png" /></p>
+</section>
+<section id="decimal-scalling">
+<h2>decimal scalling<a class="headerlink" href="#decimal-scalling" title="Link to this heading">#</a></h2>
+<p><strong>Konsep:</strong>
+Decimal Scaling adalah teknik normalisasi yang sangat sederhana untuk mengecilkan nilai numerik dengan cara menggeser titik desimalnya (membaginya dengan angka kelipatan 10, seperti 10, 100, 1000, dan seterusnya).</p>
+<p>Tujuannya adalah agar nilai absolut maksimum dari atribut tersebut menjadi <strong>kurang dari 1</strong> (<span class="math notranslate nohighlight">\(&lt; 1\)</span>). Teknik ini berguna ketika kita hanya ingin memperkecil angka tanpa merusak proporsi atau jarak antar data sama sekali.</p>
+<p><strong>Rumus:</strong>
+$<span class="math notranslate nohighlight">\(v' = \frac{v}{10^j}\)</span>$</p>
+<p><em>Keterangan:</em></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(v\)</span> = nilai asli</p></li>
+<li><p><span class="math notranslate nohighlight">\(j\)</span> = bilangan bulat terkecil yang membuat nilai maksimum dari <span class="math notranslate nohighlight">\(|v'| &lt; 1\)</span>. (Sederhananya, <span class="math notranslate nohighlight">\(j\)</span> adalah jumlah digit dari angka absolut terbesar di atribut tersebut).</p></li>
+</ul>
+<p><strong>Contoh Hasil Normalisasi:</strong>
+Menggunakan data asli: <code class="docutils literal notranslate"><span class="pre">[10,</span> <span class="pre">20,</span> <span class="pre">30,</span> <span class="pre">40,</span> <span class="pre">100]</span></code>.</p>
+<ul class="simple">
+<li><p>Nilai absolut terbesar adalah 100.</p></li>
+<li><p>Angka 100 memiliki <strong>3 digit</strong>, sehingga nilai <span class="math notranslate nohighlight">\(j = 3\)</span>.</p></li>
+<li><p>Kita akan membagi semua data dengan <span class="math notranslate nohighlight">\(10^3\)</span> (yaitu 1000).</p></li>
+</ul>
+<p>Hasil setelah dinormalisasi:</p>
+<ul class="simple">
+<li><p>10 berubah menjadi <strong>0.01</strong></p></li>
+<li><p>40 berubah menjadi <strong>0.04</strong></p></li>
+<li><p>100 berubah menjadi <strong>0.10</strong> (nilainya sekarang <span class="math notranslate nohighlight">\(&lt; 1\)</span>)</p></li>
+</ul>
+<p><strong>Implementasi Kode (Python):</strong>
+<em>Catatan: Pustaka <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> (sklearn) tidak memiliki fungsi bawaan yang secara spesifik melakukan Decimal Scaling murni (yang terdekat adalah <code class="docutils literal notranslate"><span class="pre">MaxAbsScaler</span></code>, namun membaginya dengan nilai maksimum absolut, bukan kelipatan 10). Oleh karena itu, kita membuat fungsi kustom menggunakan NumPy dan Pandas.</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Data contoh</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;nilai&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">100</span><span class="p">]})</span>
+
+<span class="c1"># 1. Membuat fungsi sendiri (Manual) menggunakan NumPy</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">decimal_scaling_manual</span><span class="p">(</span><span class="n">kolom</span><span class="p">):</span>
+    <span class="c1"># Cari nilai absolut maksimum dari kolom tersebut</span>
+    <span class="n">max_abs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">kolom</span><span class="p">))</span>
+    
+    <span class="c1"># Hitung jumlah digit dari nilai maksimum tersebut (menentukan nilai j)</span>
+    <span class="c1"># Ubah menjadi integer (hilangkan koma jika ada), jadikan string, lalu hitung panjangnya</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">max_abs</span><span class="p">)))</span>
+    
+    <span class="c1"># Bagikan nilai asli dengan 10 pangkat j</span>
+    <span class="k">return</span> <span class="n">kolom</span> <span class="o">/</span> <span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="n">j</span><span class="p">)</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;decimal_scaling&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">decimal_scaling_manual</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;nilai&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Implementasi Kode (Orange Data Mining)</strong>
+Kode ini digunakan di dalam widget Python Script pada Orange untuk memproses data dari tabel yang masuk (in_data).</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">Orange.data.pandas_compat</span><span class="w"> </span><span class="kn">import</span> <span class="n">table_to_frame</span><span class="p">,</span> <span class="n">table_from_frame</span>
+
+<span class="k">if</span> <span class="n">in_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1"># 1. Ubah format tabel Orange ke Pandas DataFrame</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">table_to_frame</span><span class="p">(</span><span class="n">in_data</span><span class="p">)</span>
+    
+    <span class="c1"># Deteksi otomatis kolom numerik</span>
+    <span class="n">numeric_cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span>
+    
+    <span class="c1"># 2. Proses normalisasi Decimal Scaling</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">numeric_cols</span><span class="p">:</span>
+        <span class="c1"># Cari nilai absolut maksimum, abaikan nilai kosong (NaN)</span>
+        <span class="n">max_abs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]))</span>
+        
+        <span class="c1"># Pastikan tidak membagi dengan nol jika kolomnya kosong semua</span>
+        <span class="k">if</span> <span class="n">max_abs</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">max_abs</span><span class="p">):</span>
+            <span class="c1"># Hitung jumlah digit angka dari nilai maksimum</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">max_abs</span><span class="p">)))</span>
+            <span class="c1"># Membuat kolom baru dengan akhiran &#39;_decimal&#39;</span>
+            <span class="n">df</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">_decimal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="n">j</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Jika datanya kosong/nol semua, kembalikan nilai aslinya</span>
+            <span class="n">df</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">_decimal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span>
+
+    <span class="c1"># 3. Kembalikan data ke format Orange agar bisa diteruskan ke widget Data Table</span>
+    <span class="n">out_data</span> <span class="o">=</span> <span class="n">table_from_frame</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="Visualisasi" src="_images/i48.png" /></p>
+</section>
+<section id="missing-values-menyelesaikan-dengan-wknn-manual-code-menghitung-wknn">
+<h2>Missing values : menyelesaikan dengan WKNN (manual) + code menghitung WKNN<a class="headerlink" href="#missing-values-menyelesaikan-dengan-wknn-manual-code-menghitung-wknn" title="Link to this heading">#</a></h2>
+<p>Catatan ini mendemonstrasikan cara melakukan imputasi data yang hilang (missing values) menggunakan metode <strong>Weighted K-Nearest Neighbors (WKNN)</strong>. Metode ini memperkirakan nilai yang hilang dengan mencari tetangga terdekat berdasarkan fitur lain yang tersedia, lalu menghitung rata-rata tertimbang (<em>weighted average</em>) di mana tetangga yang lebih dekat memiliki bobot (pengaruh) yang lebih besar.</p>
+<section id="data-asli">
+<h3>1. Data Asli<a class="headerlink" href="#data-asli" title="Link to this heading">#</a></h3>
+<p>Misalkan kita memiliki dataset berikut (Asumsi penempatan di Excel: Header berada di baris 1, data berada di kolom A, B, C mulai baris 2 hingga 8).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Baris Excel</p></th>
+<th class="head text-center"><p>A (ipk)</p></th>
+<th class="head text-center"><p>B (po)</p></th>
+<th class="head text-center"><p>C (jml)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><strong>2</strong></p></td>
+<td class="text-center"><p>2</p></td>
+<td class="text-center"><p>200000</p></td>
+<td class="text-center"><p>2</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><strong>3</strong></p></td>
+<td class="text-center"><p>3</p></td>
+<td class="text-center"><p>300000</p></td>
+<td class="text-center"><p>3</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><strong>4</strong></p></td>
+<td class="text-center"><p>4</p></td>
+<td class="text-center"><p>200000</p></td>
+<td class="text-center"><p>2</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><strong>5</strong></p></td>
+<td class="text-center"><p>2</p></td>
+<td class="text-center"><p>200000</p></td>
+<td class="text-center"><p>3</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><strong>6</strong></p></td>
+<td class="text-center"><p>3</p></td>
+<td class="text-center"><p>300000</p></td>
+<td class="text-center"><p>2</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><strong>7</strong></p></td>
+<td class="text-center"><p>4</p></td>
+<td class="text-center"><p>400000</p></td>
+<td class="text-center"><p>3</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><strong>8 (Target)</strong></p></td>
+<td class="text-center"><p><strong>2</strong></p></td>
+<td class="text-center"><p><strong>300000</strong></p></td>
+<td class="text-center"><p><strong>?</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Karena skala atribut <code class="docutils literal notranslate"><span class="pre">ipk</span></code> (satuan) dan <code class="docutils literal notranslate"><span class="pre">po</span></code> (ratusan ribu) sangat berbeda, kita wajib melakukan <strong>Normalisasi Min-Max</strong> agar perhitungan jarak adil.</p>
+</section>
+<hr class="docutils" />
+<section id="penghitungan-manual-menggunakan-excel">
+<h3>2. Penghitungan Manual Menggunakan Excel<a class="headerlink" href="#penghitungan-manual-menggunakan-excel" title="Link to this heading">#</a></h3>
+<p>Berikut adalah simulasi tabel bantu di Excel beserta rumus yang diketikkan pada baris pertama data (Baris 2). Anda cukup men-drag (menarik) rumus ini ke bawah hingga baris ke-7.</p>
+<section id="a-normalisasi-min-max">
+<h4>A. Normalisasi Min-Max<a class="headerlink" href="#a-normalisasi-min-max" title="Link to this heading">#</a></h4>
+<p>Buat kolom bantuan baru untuk nilai yang dinormalisasi (Misal di kolom F dan G).</p>
+<ul class="simple">
+<li><p><strong>Kolom F2 (<code class="docutils literal notranslate"><span class="pre">ipk_norm</span></code>)</strong>: <code class="docutils literal notranslate"><span class="pre">=(A2-MIN($A$2:$A$8))/(MAX($A$2:$A$8)-MIN($A$2:$A$8))</span></code></p></li>
+<li><p><strong>Kolom G2 (<code class="docutils literal notranslate"><span class="pre">po_norm</span></code>)</strong>: <code class="docutils literal notranslate"><span class="pre">=(B2-MIN($B$2:$B$8))/(MAX($B$2:$B$8)-MIN($B$2:$B$8))</span></code></p></li>
+</ul>
+<p><em>Catatan: Nilai target di baris 8 juga ikut dinormalisasi dengan rumus yang sama. Hasilnya target memiliki <code class="docutils literal notranslate"><span class="pre">ipk_norm</span></code> di sel <strong>F8</strong> (=0) dan <code class="docutils literal notranslate"><span class="pre">po_norm</span></code> di sel <strong>G8</strong> (=0.5).</em></p>
+</section>
+<section id="b-menghitung-jarak-dan-bobot-tabel-wknn">
+<h4>B. Menghitung Jarak dan Bobot (Tabel WKNN)<a class="headerlink" href="#b-menghitung-jarak-dan-bobot-tabel-wknn" title="Link to this heading">#</a></h4>
+<p>Buat kolom selanjutnya untuk menghitung komponen WKNN (Misal di kolom K sampai Q). Ketikkan rumus ini di <strong>Baris 2</strong>, lalu <em>drag</em> ke bawah sampai baris 7:</p>
+<ul class="simple">
+<li><p><strong>Kolom K2 (Selisih IPK)</strong>: <code class="docutils literal notranslate"><span class="pre">=F2-$F$8</span></code> <em>(Nilai norm tetangga dikurangi nilai norm target)</em></p></li>
+<li><p><strong>Kolom L2 (Kuadrat IPK)</strong>: <code class="docutils literal notranslate"><span class="pre">=K2^2</span></code></p></li>
+<li><p><strong>Kolom M2 (Selisih PO)</strong>: <code class="docutils literal notranslate"><span class="pre">=G2-$G$8</span></code></p></li>
+<li><p><strong>Kolom N2 (Kuadrat PO)</strong>: <code class="docutils literal notranslate"><span class="pre">=M2^2</span></code></p></li>
+<li><p><strong>Kolom P2 (Bobot / <code class="docutils literal notranslate"><span class="pre">si</span></code>)</strong>: <code class="docutils literal notranslate"><span class="pre">=1/(L2+N2)</span></code> <em>(Rumus Bobot = 1 / Total Kuadrat Jarak)</em></p></li>
+<li><p><strong>Kolom Q2 (Pembilang)</strong>: <code class="docutils literal notranslate"><span class="pre">=P2*C2</span></code> <em>(Bobot dikali dengan nilai asli <code class="docutils literal notranslate"><span class="pre">jml</span></code> pada tetangga tersebut)</em></p></li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Baris</p></th>
+<th class="head text-center"><p>K (Selisih IPK)</p></th>
+<th class="head text-center"><p>L (Kuadrat IPK)</p></th>
+<th class="head text-center"><p>M (Selisih PO)</p></th>
+<th class="head text-center"><p>N (Kuadrat PO)</p></th>
+<th class="head text-center"><p>P (Bobot / si)</p></th>
+<th class="head text-center"><p>Q (Pembilang)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><strong>2</strong></p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>-0.5</p></td>
+<td class="text-center"><p>0.25</p></td>
+<td class="text-center"><p>4</p></td>
+<td class="text-center"><p>8</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><strong>3</strong></p></td>
+<td class="text-center"><p>0.5</p></td>
+<td class="text-center"><p>0.25</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>4</p></td>
+<td class="text-center"><p>12</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><strong>4</strong></p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>-0.5</p></td>
+<td class="text-center"><p>0.25</p></td>
+<td class="text-center"><p>0.8</p></td>
+<td class="text-center"><p>1.6</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><strong>5</strong></p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>-0.5</p></td>
+<td class="text-center"><p>0.25</p></td>
+<td class="text-center"><p>4</p></td>
+<td class="text-center"><p>12</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><strong>6</strong></p></td>
+<td class="text-center"><p>0.5</p></td>
+<td class="text-center"><p>0.25</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>4</p></td>
+<td class="text-center"><p>8</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><strong>7</strong></p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0.5</p></td>
+<td class="text-center"><p>0.25</p></td>
+<td class="text-center"><p>0.8</p></td>
+<td class="text-center"><p>2.4</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="c-hasil-akhir-weighted-average">
+<h4>C. Hasil Akhir (Weighted Average)<a class="headerlink" href="#c-hasil-akhir-weighted-average" title="Link to this heading">#</a></h4>
+<p>Setelah semua baris tetangga dihitung, buat sel rekapitulasi di bawah tabel:</p>
+<ul class="simple">
+<li><p><strong>Total Pembilang</strong> (Sel Q9): <code class="docutils literal notranslate"><span class="pre">=SUM(Q2:Q7)</span></code> <span class="math notranslate nohighlight">\(\rightarrow\)</span> <strong>Hasilnya: 44</strong></p></li>
+<li><p><strong>Total Penyebut / Bobot</strong> (Sel P9): <code class="docutils literal notranslate"><span class="pre">=SUM(P2:P7)</span></code> <span class="math notranslate nohighlight">\(\rightarrow\)</span> <strong>Hasilnya: 17.6</strong></p></li>
+<li><p><strong>Estimasi Nilai <code class="docutils literal notranslate"><span class="pre">jml</span></code></strong> (Sel S9): <code class="docutils literal notranslate"><span class="pre">=Q9/P9</span></code> <span class="math notranslate nohighlight">\(\rightarrow\)</span> <strong>Hasilnya: 2.5</strong></p></li>
+</ul>
+<p>Jadi, nilai imputasi untuk data yang hilang adalah <strong>2.5</strong>.</p>
+<hr class="docutils" />
+<p><img alt="Visualisasi" src="_images/i42.png" /></p>
+</section>
+</section>
+<section id="kode-implementasi-di-python-orange-data-mining">
+<h3>3. Kode Implementasi di Python (Orange Data Mining)<a class="headerlink" href="#kode-implementasi-di-python-orange-data-mining" title="Link to this heading">#</a></h3>
+<p>Untuk mengotomatisasi proses di atas tanpa harus menyusun rumus Excel satu per satu, kita bisa menggunakan script Python (via widget <strong>Python Script</strong> di Orange). Script di bawah ini menggunakan pustaka <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> untuk normalisasi, dan otomatis menangani berapapun jumlah kolom serta baris yang kosong.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">Orange.data.pandas_compat</span><span class="w"> </span><span class="kn">import</span> <span class="n">table_to_frame</span><span class="p">,</span> <span class="n">table_from_frame</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MinMaxScaler</span>
+
+<span class="k">if</span> <span class="n">in_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1"># 1. Konversi data Orange ke Pandas DataFrame</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">table_to_frame</span><span class="p">(</span><span class="n">in_data</span><span class="p">)</span>
+    
+    <span class="c1"># Otomatis mendeteksi semua kolom yang bertipe numerik (angka)</span>
+    <span class="n">numeric_cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span>
+    <span class="n">df_calc</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">numeric_cols</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    
+    <span class="c1"># 2. Normalisasi Min-Max otomatis menggunakan sklearn</span>
+    <span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+    <span class="n">df_calc</span><span class="p">[</span><span class="n">numeric_cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_calc</span><span class="p">[</span><span class="n">numeric_cols</span><span class="p">])</span>
+
+    <span class="c1"># 3. Proses Imputasi WKNNI</span>
+    <span class="c1"># Cari indeks baris yang memiliki setidaknya satu nilai kosong (NaN)</span>
+    <span class="n">baris_kosong</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">index</span>
+    
+    <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">baris_kosong</span><span class="p">:</span>
+        <span class="n">kolom_kosong</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span>
+        
+        <span class="k">for</span> <span class="n">target_col</span> <span class="ow">in</span> <span class="n">kolom_kosong</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">target_col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">numeric_cols</span><span class="p">:</span>
+                <span class="k">continue</span>
+                
+            <span class="c1"># Filter tetangga yang datanya tidak kosong pada kolom yang dicari</span>
+            <span class="n">tetangga_idx</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="n">target_col</span><span class="p">]</span><span class="o">.</span><span class="n">notnull</span><span class="p">()]</span><span class="o">.</span><span class="n">index</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tetangga_idx</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">continue</span>
+            
+            <span class="c1"># Cari fitur untuk menghitung jarak (kolom yang datanya sama-sama tersedia)</span>
+            <span class="n">fitur_tersedia</span> <span class="o">=</span> <span class="n">df_calc</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">df_calc</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">notnull</span><span class="p">()]</span>
+            <span class="n">fitur_jarak</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">fitur_tersedia</span> <span class="k">if</span> <span class="n">c</span> <span class="o">!=</span> <span class="n">target_col</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">fitur_jarak</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">continue</span>
+            
+            <span class="n">target_features</span> <span class="o">=</span> <span class="n">df_calc</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="n">fitur_jarak</span><span class="p">]</span>
+            <span class="n">tetangga_features</span> <span class="o">=</span> <span class="n">df_calc</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">tetangga_idx</span><span class="p">,</span> <span class="n">fitur_jarak</span><span class="p">]</span>
+            
+            <span class="c1"># Hitung jarak dan bobot kemiripan</span>
+            <span class="n">jarak_kuadrat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">((</span><span class="n">tetangga_features</span> <span class="o">-</span> <span class="n">target_features</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">bobot</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">jarak_kuadrat</span> <span class="o">+</span> <span class="mf">1e-10</span><span class="p">)</span> <span class="c1"># 1e-10 untuk cegah pembagian dengan nol</span>
+            
+            <span class="c1"># Hitung Weighted Average</span>
+            <span class="n">nilai_tetangga</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">tetangga_idx</span><span class="p">,</span> <span class="n">target_col</span><span class="p">]</span>
+            <span class="n">estimasi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">bobot</span> <span class="o">*</span> <span class="n">nilai_tetangga</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">bobot</span><span class="p">)</span>
+            
+            <span class="c1"># Masukkan hasil kembali ke tabel asli</span>
+            <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="n">target_col</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">estimasi</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Baris ke-</span><span class="si">{</span><span class="n">idx</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">, Kolom &#39;</span><span class="si">{</span><span class="n">target_col</span><span class="si">}</span><span class="s2">&#39; diestimasi: </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">estimasi</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 4. Kembalikan ke format Orange</span>
+    <span class="n">out_data</span> <span class="o">=</span> <span class="n">table_from_frame</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="workflow-orange-data-mining">
+<h4>workflow orange data mining<a class="headerlink" href="#workflow-orange-data-mining" title="Link to this heading">#</a></h4>
+<p><img alt="Visualisasi" src="_images/i43.png" /></p>
+<section id="data-table-sebelum">
+<h5>data table sebelum<a class="headerlink" href="#data-table-sebelum" title="Link to this heading">#</a></h5>
+<p><img alt="Visualisasi" src="_images/i44.png" /></p>
+</section>
+<section id="data-table-sesudah">
+<h5>data table sesudah<a class="headerlink" href="#data-table-sesudah" title="Link to this heading">#</a></h5>
+<p><img alt="Visualisasi" src="_images/i45.png" /></p>
+</section>
+</section>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -430,6 +930,46 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Pertemuan 5</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">preprocessing</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#z-score">z score</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-normalisation">min-max normalisation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decimal-scalling">decimal scalling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-values-menyelesaikan-dengan-wknn-manual-code-menghitung-wknn">Missing values : menyelesaikan dengan WKNN (manual) + code menghitung WKNN</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-asli">1. Data Asli</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penghitungan-manual-menggunakan-excel">2. Penghitungan Manual Menggunakan Excel</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-normalisasi-min-max">A. Normalisasi Min-Max</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#b-menghitung-jarak-dan-bobot-tabel-wknn">B. Menghitung Jarak dan Bobot (Tabel WKNN)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c-hasil-akhir-weighted-average">C. Hasil Akhir (Weighted Average)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kode-implementasi-di-python-orange-data-mining">3. Kode Implementasi di Python (Orange Data Mining)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-orange-data-mining">workflow orange data mining</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#data-table-sebelum">data table sebelum</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#data-table-sesudah">data table sesudah</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>
