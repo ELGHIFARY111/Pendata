@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Penambangan data &#8212; Data Mining</title>
+    <title>pertemuan 6 &#8212; Data Mining</title>
   
   
   
@@ -59,10 +59,10 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pertemuan6';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Pertemuan 1" href="pertemuan1.html" />
+    <link rel="prev" title="Pertemuan 5" href="pertemuan5.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -125,8 +125,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -145,7 +143,7 @@
     
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="intro.html">
   
   
   
@@ -176,20 +174,20 @@
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     Penambangan data
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="pertemuan1.html">Pertemuan 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pertemuan2.html">Pertemuan 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pertemuan3.html">Pertemuan 3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pertemuan4.html">Pertemuan 4</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pertemuan5.html">Pertemuan 5</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="pertemuan6.html">pertemuan 6</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">pertemuan 6</a></li>
 
 </ul>
 
@@ -262,7 +260,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpertemuan6.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -292,7 +290,7 @@
       
       
       
-      <li><a href="_sources/intro.md" target="_blank"
+      <li><a href="_sources/pertemuan6.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -376,7 +374,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Penambangan data</h1>
+    <h1>pertemuan 6</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -386,9 +384,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#informasi-pribadi">Informasi Pribadi</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tentang-saya">Tentang Saya</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">pertemuan 6</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pelatihan-sain-data-untuk-bisnis-seleksi-fitur-information-gain">Pelatihan Sain Data Untuk Bisnis: Seleksi Fitur - Information Gain</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seleksi-fitur">Seleksi Fitur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memilih-fitur-dengan-information-gain">Memilih Fitur dengan Information Gain</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-information-gain">Rumus Information Gain</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metode-filter-seleksi-fitur-lainnya">Metode Filter/Seleksi Fitur Lainnya</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mencoba">mencoba</a></li>
 </ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -399,26 +405,132 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="penambangan-data">
-<h1>Penambangan data<a class="headerlink" href="#penambangan-data" title="Link to this heading">#</a></h1>
-<section id="informasi-pribadi">
-<h2>Informasi Pribadi<a class="headerlink" href="#informasi-pribadi" title="Link to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="pertemuan-6">
+<h1>pertemuan 6<a class="headerlink" href="#pertemuan-6" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="pelatihan-sain-data-untuk-bisnis-seleksi-fitur-information-gain">
+<h1>Pelatihan Sain Data Untuk Bisnis: Seleksi Fitur - Information Gain<a class="headerlink" href="#pelatihan-sain-data-untuk-bisnis-seleksi-fitur-information-gain" title="Link to this heading">#</a></h1>
+<section id="seleksi-fitur">
+<h2>Seleksi Fitur<a class="headerlink" href="#seleksi-fitur" title="Link to this heading">#</a></h2>
+<p>Seleksi fitur adalah proses memilih sebagian fitur (atribut) sesedikit mungkin dan memenuhi kebutuhan analisis (masih informatif).</p>
+<p>Tujuan utama dari seleksi fitur meliputi:</p>
 <ul class="simple">
-<li><p>Nama: Mohammad Elghifary</p></li>
-<li><p>NIM: 240411100108</p></li>
-<li><p>Program Studi: Informatika</p></li>
-<li><p>Semester: 4</p></li>
+<li><p>Menghilangkan fitur yang kurang relevan.</p></li>
+<li><p>Menghilangkan fitur yang redundan.</p></li>
 </ul>
 </section>
-<section id="tentang-saya">
-<h2>Tentang Saya<a class="headerlink" href="#tentang-saya" title="Link to this heading">#</a></h2>
-<p>Saya adalah mahasiswa Program Studi Informatika yang memiliki minat dalam bidang teknologi, khususnya pada pengolahan data, pemrograman, dan pengembangan sistem.
-Saat ini saya sedang menempuh semester 4 dan aktif mempelajari berbagai mata kuliah yang berkaitan dengan analisis data dan pengembangan perangkat lunak.</p>
-<p>Melalui mata kuliah Penambangan Data ini, saya berharap dapat memahami konsep, teknik, dan implementasi data mining secara lebih mendalam serta mampu menerapkannya dalam studi kasus nyata.</p>
-<p>Saya juga terus berusaha mengembangkan kemampuan berpikir kritis, problem solving, dan kerja sama tim sebagai bekal untuk dunia kerja maupun pengembangan diri di bidang teknologi informasi.</p>
+<hr class="docutils" />
+<section id="memilih-fitur-dengan-information-gain">
+<h2>Memilih Fitur dengan Information Gain<a class="headerlink" href="#memilih-fitur-dengan-information-gain" title="Link to this heading">#</a></h2>
+<p>Information Gain merupakan metode mengukur seberapa baik suatu fitur memisahkan data ke dalam kelas-kelas target yang berbeda, dengan memanfaatkan konsep dari teori informasi (information theory), khususnya entropi.</p>
+<p><strong>Konsep Entropi:</strong></p>
+<ul class="simple">
+<li><p>Entropi mengukur tingkat ketidakpastian atau kekacauan dalam suatu dataset.</p></li>
+<li><p><strong>Entropi tinggi:</strong> Data sangat bercampur (banyak kelas berbeda).</p></li>
+<li><p><strong>Entropi rendah:</strong> Data homogen (hampir semua data milik satu kelas).</p></li>
+</ul>
 </section>
-<div class="toctree-wrapper compound">
+<hr class="docutils" />
+<section id="rumus-information-gain">
+<h2>Rumus Information Gain<a class="headerlink" href="#rumus-information-gain" title="Link to this heading">#</a></h2>
+<p>Berdasarkan rumus, berikut adalah persamaan matematis yang digunakan dalam perhitungan Information Gain:</p>
+<p><strong>1. Information Gain</strong>
+<span class="math notranslate nohighlight">\(IG(D, A) = H(D) - H(D|A)\)</span></p>
+<ul class="simple">
+<li><p>H(D): Entropi awal dataset sebelum pemisahan.</p></li>
+<li><p>H(D|A): Entropi rata-rata setelah membagi dataset berdasarkan fitur A.</p></li>
+</ul>
+<p><strong>2. Entropi</strong>
+<span class="math notranslate nohighlight">\(H(D) = - \sum_{i=1}^{k} p_i \log_2(p_i)\)</span></p>
+<ul class="simple">
+<li><p>p_i: Proporsi sampel di kelas i dalam dataset D.</p></li>
+<li><p>k: Jumlah kelas.</p></li>
+</ul>
+<p><strong>3. Entropi Bersyarat</strong>
+<span class="math notranslate nohighlight">\(H(D|A) = \sum_{v \in \text{nilai}(A)} \frac{|D_v|}{|D|} \cdot H(D_v)\)</span></p>
+<ul class="simple">
+<li><p>D_v: Subset data di mana fitur A bernilai v.</p></li>
+<li><p>|D_v| / |D|: Bobot proporsional dari subset tersebut.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="metode-filter-seleksi-fitur-lainnya">
+<h2>Metode Filter/Seleksi Fitur Lainnya<a class="headerlink" href="#metode-filter-seleksi-fitur-lainnya" title="Link to this heading">#</a></h2>
+<p>Selain Information Gain, terdapat beberapa metode filter lainnya untuk seleksi fitur:</p>
+<ul class="simple">
+<li><p><strong>Berbasis Korelasi:</strong> Menghapus atribut redundan menggunakan heuristik. Parameter yang digunakan meliputi:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(r_{ci}\)</span>: Korelasi rata-rata dari atribut target dengan semua atribut lain dalam himpunan tersebut.</p></li>
+<li><p><span class="math notranslate nohighlight">\(r_{ii}\)</span>: Korelasi rata-rata antar atribut (attribute-attribute) di antara berbagai atribut (kecuali atribut target).</p></li>
+<li><p><span class="math notranslate nohighlight">\(k\)</span>: Jumlah atribut.</p></li>
+</ul>
+</li>
+<li><p><strong>Berbasis Missing Values:</strong> Menfilter fitur dengan menghapus atribut yang memiliki rasio missing values lebih besar dari batas ambang.</p></li>
+<li><p><strong>Berbasis Variance:</strong> Menfilter fitur dengan menghapus atribut yang memiliki variansi lebih rendah dari batas ambang.</p></li>
+</ul>
+</section>
+<section id="mencoba">
+<h2>mencoba<a class="headerlink" href="#mencoba" title="Link to this heading">#</a></h2>
+<p><strong>kode python untuk import wine dataset dari sklearn</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_wine</span>
+
+<span class="n">wine_data</span> <span class="o">=</span> <span class="n">load_wine</span><span class="p">()</span>
+<span class="n">df_wine</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">wine_data</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">wine_data</span><span class="o">.</span><span class="n">feature_names</span><span class="p">)</span>
+
+<span class="n">df_wine</span><span class="p">[</span><span class="s1">&#39;target_class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wine_data</span><span class="o">.</span><span class="n">target</span>
+
+<span class="n">df_wine</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;wine_dataset.xlsx&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;File wine_dataset.xlsx berhasil dibuat!&quot;</span><span class="p">)</span>
+
+</pre></div>
 </div>
+<p><img alt="Visualisasi" src="_images/i49.png" />
+<strong>kode python</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">mutual_info_classif</span>
+
+<span class="c1"># Load data from KNIME (sekarang ini adalah data Wine)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">input_table_1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># Pisahkan features (X) dan target (y)</span>
+<span class="c1"># Asumsi: kolom terakhir adalah target class</span>
+<span class="n">target_column</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">target_column</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">target_column</span><span class="p">]</span>
+
+<span class="c1"># Ubah tipe data target menjadi integer SEBELUM dimasukkan ke fungsi</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> 
+
+<span class="c1"># Calculate Information Gain sesuai materi (Mutual Information setara dengan IG)</span>
+<span class="n">info_gain</span> <span class="o">=</span> <span class="n">mutual_info_classif</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Buat DataFrame hasil</span>
+<span class="n">result_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Feature&#39;</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
+    <span class="s1">&#39;Information_Gain&#39;</span><span class="p">:</span> <span class="n">info_gain</span>
+<span class="p">})</span>
+
+<span class="c1"># Sort by Information Gain (descending) untuk melihat entropi yang paling banyak berkurang</span>
+<span class="n">result_df</span> <span class="o">=</span> <span class="n">result_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Information_Gain&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Tambahkan ranking</span>
+<span class="n">result_df</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Rank&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">result_df</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># Ambil 3 fitur tertinggi </span>
+<span class="n">top_3_features</span> <span class="o">=</span> <span class="n">result_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)[</span><span class="s1">&#39;Feature&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="c1"># OUTPUT 1: Data dengan HANYA 3 fitur tertinggi + target</span>
+<span class="n">output_columns</span> <span class="o">=</span> <span class="n">top_3_features</span> <span class="o">+</span> <span class="p">[</span><span class="n">target_column</span><span class="p">]</span>
+<span class="n">output_table_1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">output_columns</span><span class="p">]</span>
+
+<span class="c1"># OUTPUT 2: Tabel peringkat semua fitur berdasarkan Information Gain</span>
+<span class="n">output_table_2</span> <span class="o">=</span> <span class="n">result_df</span>
+</pre></div>
+</div>
+<p><img alt="Visualisasi" src="_images/i50.png" />
+<img alt="Visualisasi" src="_images/i51.png" /></p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -451,14 +563,14 @@ Saat ini saya sedang menempuh semester 4 dan aktif mempelajari berbagai mata kul
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="right-next"
-       href="pertemuan1.html"
-       title="next page">
+    <a class="left-prev"
+       href="pertemuan5.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Pertemuan 1</p>
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Pertemuan 5</p>
       </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -476,9 +588,17 @@ Saat ini saya sedang menempuh semester 4 dan aktif mempelajari berbagai mata kul
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#informasi-pribadi">Informasi Pribadi</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tentang-saya">Tentang Saya</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">pertemuan 6</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pelatihan-sain-data-untuk-bisnis-seleksi-fitur-information-gain">Pelatihan Sain Data Untuk Bisnis: Seleksi Fitur - Information Gain</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seleksi-fitur">Seleksi Fitur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memilih-fitur-dengan-information-gain">Memilih Fitur dengan Information Gain</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-information-gain">Rumus Information Gain</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metode-filter-seleksi-fitur-lainnya">Metode Filter/Seleksi Fitur Lainnya</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mencoba">mencoba</a></li>
 </ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
