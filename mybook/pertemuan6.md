@@ -66,3 +66,48 @@ df_wine.to_excel('wine_dataset.xlsx', index=False)
 print("File wine_dataset.xlsx berhasil dibuat!")
 
 ```
+![Visualisasi](asset/tm6/i49.png)
+**kode python**
+```python
+import pandas as pd
+from sklearn.feature_selection import mutual_info_classif
+
+# Load data from KNIME (sekarang ini adalah data Wine)
+df = input_table_1.copy()
+
+# Pisahkan features (X) dan target (y)
+# Asumsi: kolom terakhir adalah target class
+target_column = df.columns[-1]  
+X = df.drop(columns=[target_column])
+y = df[target_column]
+
+# Ubah tipe data target menjadi integer SEBELUM dimasukkan ke fungsi
+y = y.astype(int) 
+
+# Calculate Information Gain sesuai materi (Mutual Information setara dengan IG)
+info_gain = mutual_info_classif(X, y, random_state=42)
+
+# Buat DataFrame hasil
+result_df = pd.DataFrame({
+    'Feature': X.columns,
+    'Information_Gain': info_gain
+})
+
+# Sort by Information Gain (descending) untuk melihat entropi yang paling banyak berkurang
+result_df = result_df.sort_values('Information_Gain', ascending=False).reset_index(drop=True)
+
+# Tambahkan ranking
+result_df.insert(0, 'Rank', range(1, len(result_df) + 1))
+
+# Ambil 3 fitur tertinggi 
+top_3_features = result_df.head(3)['Feature'].tolist()
+
+# OUTPUT 1: Data dengan HANYA 3 fitur tertinggi + target
+output_columns = top_3_features + [target_column]
+output_table_1 = df[output_columns]
+
+# OUTPUT 2: Tabel peringkat semua fitur berdasarkan Information Gain
+output_table_2 = result_df
+```
+![Visualisasi](asset/tm6/i50.png)
+![Visualisasi](asset/tm6/i51.png)

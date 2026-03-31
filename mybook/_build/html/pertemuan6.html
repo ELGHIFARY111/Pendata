@@ -390,6 +390,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memilih-fitur-dengan-information-gain">Memilih Fitur dengan Information Gain</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-information-gain">Rumus Information Gain</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metode-filter-seleksi-fitur-lainnya">Metode Filter/Seleksi Fitur Lainnya</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mencoba">mencoba</a></li>
 </ul>
 </li>
 </ul>
@@ -468,6 +469,68 @@ document.write(`
 <li><p><strong>Berbasis Variance:</strong> Menfilter fitur dengan menghapus atribut yang memiliki variansi lebih rendah dari batas ambang.</p></li>
 </ul>
 </section>
+<section id="mencoba">
+<h2>mencoba<a class="headerlink" href="#mencoba" title="Link to this heading">#</a></h2>
+<p><strong>kode python untuk import wine dataset dari sklearn</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_wine</span>
+
+<span class="n">wine_data</span> <span class="o">=</span> <span class="n">load_wine</span><span class="p">()</span>
+<span class="n">df_wine</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">wine_data</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">wine_data</span><span class="o">.</span><span class="n">feature_names</span><span class="p">)</span>
+
+<span class="n">df_wine</span><span class="p">[</span><span class="s1">&#39;target_class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wine_data</span><span class="o">.</span><span class="n">target</span>
+
+<span class="n">df_wine</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;wine_dataset.xlsx&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;File wine_dataset.xlsx berhasil dibuat!&quot;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p><img alt="Visualisasi" src="_images/i49.png" />
+<strong>kode python</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">mutual_info_classif</span>
+
+<span class="c1"># Load data from KNIME (sekarang ini adalah data Wine)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">input_table_1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># Pisahkan features (X) dan target (y)</span>
+<span class="c1"># Asumsi: kolom terakhir adalah target class</span>
+<span class="n">target_column</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">target_column</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">target_column</span><span class="p">]</span>
+
+<span class="c1"># Ubah tipe data target menjadi integer SEBELUM dimasukkan ke fungsi</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> 
+
+<span class="c1"># Calculate Information Gain sesuai materi (Mutual Information setara dengan IG)</span>
+<span class="n">info_gain</span> <span class="o">=</span> <span class="n">mutual_info_classif</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Buat DataFrame hasil</span>
+<span class="n">result_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Feature&#39;</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
+    <span class="s1">&#39;Information_Gain&#39;</span><span class="p">:</span> <span class="n">info_gain</span>
+<span class="p">})</span>
+
+<span class="c1"># Sort by Information Gain (descending) untuk melihat entropi yang paling banyak berkurang</span>
+<span class="n">result_df</span> <span class="o">=</span> <span class="n">result_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Information_Gain&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Tambahkan ranking</span>
+<span class="n">result_df</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Rank&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">result_df</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># Ambil 3 fitur tertinggi </span>
+<span class="n">top_3_features</span> <span class="o">=</span> <span class="n">result_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)[</span><span class="s1">&#39;Feature&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="c1"># OUTPUT 1: Data dengan HANYA 3 fitur tertinggi + target</span>
+<span class="n">output_columns</span> <span class="o">=</span> <span class="n">top_3_features</span> <span class="o">+</span> <span class="p">[</span><span class="n">target_column</span><span class="p">]</span>
+<span class="n">output_table_1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">output_columns</span><span class="p">]</span>
+
+<span class="c1"># OUTPUT 2: Tabel peringkat semua fitur berdasarkan Information Gain</span>
+<span class="n">output_table_2</span> <span class="o">=</span> <span class="n">result_df</span>
+</pre></div>
+</div>
+<p><img alt="Visualisasi" src="_images/i50.png" />
+<img alt="Visualisasi" src="_images/i51.png" /></p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -531,6 +594,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memilih-fitur-dengan-information-gain">Memilih Fitur dengan Information Gain</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-information-gain">Rumus Information Gain</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metode-filter-seleksi-fitur-lainnya">Metode Filter/Seleksi Fitur Lainnya</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mencoba">mencoba</a></li>
 </ul>
 </li>
 </ul>
