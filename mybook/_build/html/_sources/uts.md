@@ -1,5 +1,10 @@
 # UTS
+![Visualisasi](asset/uts/uts4.png)
+## workflow knime
 ![Visualisasi](asset/uts/uts1.png)
+## data
+![Visualisasi](asset/uts/uts5.png)
+![Visualisasi](asset/uts/uts6.png)
 ## proses pengerjaan
 ### Column Filter: 
 Melakukan seleksi fitur (feature selection). Tahap ini bertujuan membuang atribut yang tidak memiliki nilai prediktif atau relevansi terhadap hasil akhir, seperti nomor ID, guna mengurangi dimensi data (dimensionality reduction).
