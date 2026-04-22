@@ -1,5 +1,5 @@
-# pertemuan 6
-# Pelatihan Sain Data Untuk Bisnis: Seleksi Fitur - Information Gain 
+# Pertemuan 6
+## Pelatihan Sain Data Untuk Bisnis: Seleksi Fitur - Information Gain 
 
 ## Seleksi Fitur
 Seleksi fitur adalah proses memilih sebagian fitur (atribut) sesedikit mungkin dan memenuhi kebutuhan analisis (masih informatif). 
