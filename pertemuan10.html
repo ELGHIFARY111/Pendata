@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -386,6 +386,10 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Pertemuan 10</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes">Naive Bayes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian">Pengertian</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-teorema-bayes">Rumus Teorema Bayes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jenis-jenis-utama">Jenis-jenis Utama</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kelebihan">Kelebihan</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tugas">TUGAS</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
 </ul>
@@ -407,6 +411,37 @@ document.write(`
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="naive-bayes">
 <h1>Naive Bayes<a class="headerlink" href="#naive-bayes" title="Link to this heading">#</a></h1>
+<section id="pengertian">
+<h2>Pengertian<a class="headerlink" href="#pengertian" title="Link to this heading">#</a></h2>
+<p><strong>Naive Bayes</strong> adalah algoritma klasifikasi berbasis probabilitas yang menggunakan <strong>Teorema Bayes</strong>. Disebut “Naive” (Naif) karena algoritma ini mengasumsikan bahwa setiap fitur dalam data bersifat independen (tidak saling memengaruhi), meskipun dalam kenyataannya seringkali fitur tersebut saling berkaitan.</p>
+</section>
+<section id="rumus-teorema-bayes">
+<h2>Rumus Teorema Bayes<a class="headerlink" href="#rumus-teorema-bayes" title="Link to this heading">#</a></h2>
+<p>P(C|X) = (P(X|C) * P(C)) / P(X)</p>
+<p><strong>Keterangan:</strong></p>
+<ul class="simple">
+<li><p><strong>P(C|X)</strong>: Peluang kelas C jika diketahui atribut X (Posterior).</p></li>
+<li><p><strong>P(X|C)</strong>: Peluang atribut X jika diketahui kelas C (Likelihood).</p></li>
+<li><p><strong>P(C)</strong>: Peluang awal munculnya kelas C (Prior).</p></li>
+<li><p><strong>P(X)</strong>: Probabilitas kemunculan atribut X (Evidence).</p></li>
+</ul>
+</section>
+<section id="jenis-jenis-utama">
+<h2>Jenis-jenis Utama<a class="headerlink" href="#jenis-jenis-utama" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Gaussian Naive Bayes</strong>: Digunakan untuk fitur berupa angka kontinu (seperti panjang/lebar kelopak bunga).</p></li>
+<li><p><strong>Multinomial Naive Bayes</strong>: Digunakan untuk data teks (frekuensi kata).</p></li>
+<li><p><strong>Bernoulli Naive Bayes</strong>: Digunakan untuk data biner (ya/tidak).</p></li>
+</ul>
+</section>
+<section id="kelebihan">
+<h2>Kelebihan<a class="headerlink" href="#kelebihan" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Sangat cepat dan efisien secara komputasi.</p></li>
+<li><p>Bekerja dengan baik pada dataset berdimensi tinggi.</p></li>
+<li><p>Hanya membutuhkan sedikit data latih untuk memberikan hasil yang baik.</p></li>
+</ul>
+</section>
 <section id="tugas">
 <h2>TUGAS<a class="headerlink" href="#tugas" title="Link to this heading">#</a></h2>
 <p>Laporan Proyek: Klasifikasi Naive Bayes menggunakan KNIME dan Python (Sklearn)
@@ -569,6 +604,10 @@ Node: Table View</p></li>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Pertemuan 10</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes">Naive Bayes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian">Pengertian</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-teorema-bayes">Rumus Teorema Bayes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jenis-jenis-utama">Jenis-jenis Utama</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kelebihan">Kelebihan</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tugas">TUGAS</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
 </ul>

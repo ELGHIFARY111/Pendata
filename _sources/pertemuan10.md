@@ -1,6 +1,26 @@
 # Pertemuan 10
 # Naive Bayes
+### Pengertian
+**Naive Bayes** adalah algoritma klasifikasi berbasis probabilitas yang menggunakan **Teorema Bayes**. Disebut "Naive" (Naif) karena algoritma ini mengasumsikan bahwa setiap fitur dalam data bersifat independen (tidak saling memengaruhi), meskipun dalam kenyataannya seringkali fitur tersebut saling berkaitan.
 
+### Rumus Teorema Bayes
+P(C|X) = (P(X|C) * P(C)) / P(X)
+
+**Keterangan:**
+* **P(C|X)**: Peluang kelas C jika diketahui atribut X (Posterior).
+* **P(X|C)**: Peluang atribut X jika diketahui kelas C (Likelihood).
+* **P(C)**: Peluang awal munculnya kelas C (Prior).
+* **P(X)**: Probabilitas kemunculan atribut X (Evidence).
+
+### Jenis-jenis Utama
+* **Gaussian Naive Bayes**: Digunakan untuk fitur berupa angka kontinu (seperti panjang/lebar kelopak bunga).
+* **Multinomial Naive Bayes**: Digunakan untuk data teks (frekuensi kata).
+* **Bernoulli Naive Bayes**: Digunakan untuk data biner (ya/tidak).
+
+### Kelebihan
+* Sangat cepat dan efisien secara komputasi.
+* Bekerja dengan baik pada dataset berdimensi tinggi.
+* Hanya membutuhkan sedikit data latih untuk memberikan hasil yang baik.
 ## TUGAS
 Laporan Proyek: Klasifikasi Naive Bayes menggunakan KNIME dan Python (Sklearn)
 Deskripsi Proyek:
