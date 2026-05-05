@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Penambangan data &#8212; Data Mining</title>
+    <title>Pertemuan 10 &#8212; Data Mining</title>
   
   
   
@@ -57,12 +57,10 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pertemuan10';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Pertemuan 1" href="pertemuan1.html" />
+    <link rel="prev" title="UTS" href="uts.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -125,8 +123,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -145,7 +141,7 @@
     
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="intro.html">
   
   
   
@@ -176,13 +172,13 @@
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     Penambangan data
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="pertemuan1.html">Pertemuan 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pertemuan2.html">Pertemuan 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pertemuan3.html">Pertemuan 3</a></li>
@@ -191,7 +187,7 @@
 
 <li class="toctree-l1"><a class="reference internal" href="pertemuan6.html">Pertemuan 6</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uts.html">UTS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pertemuan10.html">Pertemuan 10</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Pertemuan 10</a></li>
 
 </ul>
 
@@ -264,7 +260,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpertemuan10.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -294,7 +290,7 @@
       
       
       
-      <li><a href="_sources/intro.md" target="_blank"
+      <li><a href="_sources/pertemuan10.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -378,7 +374,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Penambangan data</h1>
+    <h1>Pertemuan 10</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -388,9 +384,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#informasi-pribadi">Informasi Pribadi</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tentang-saya">Tentang Saya</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Pertemuan 10</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes">Naive Bayes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tugas">TUGAS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
 </ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -401,26 +402,114 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="penambangan-data">
-<h1>Penambangan data<a class="headerlink" href="#penambangan-data" title="Link to this heading">#</a></h1>
-<section id="informasi-pribadi">
-<h2>Informasi Pribadi<a class="headerlink" href="#informasi-pribadi" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Nama: Mohammad Elghifary</p></li>
-<li><p>NIM: 240411100108</p></li>
-<li><p>Program Studi: Informatika</p></li>
-<li><p>Semester: 4</p></li>
-</ul>
+  <section class="tex2jax_ignore mathjax_ignore" id="pertemuan-10">
+<h1>Pertemuan 10<a class="headerlink" href="#pertemuan-10" title="Link to this heading">#</a></h1>
 </section>
-<section id="tentang-saya">
-<h2>Tentang Saya<a class="headerlink" href="#tentang-saya" title="Link to this heading">#</a></h2>
-<p>Saya adalah mahasiswa Program Studi Informatika yang memiliki minat dalam bidang teknologi, khususnya pada pengolahan data, pemrograman, dan pengembangan sistem.
-Saat ini saya sedang menempuh semester 4 dan aktif mempelajari berbagai mata kuliah yang berkaitan dengan analisis data dan pengembangan perangkat lunak.</p>
-<p>Melalui mata kuliah Penambangan Data ini, saya berharap dapat memahami konsep, teknik, dan implementasi data mining secara lebih mendalam serta mampu menerapkannya dalam studi kasus nyata.</p>
-<p>Saya juga terus berusaha mengembangkan kemampuan berpikir kritis, problem solving, dan kerja sama tim sebagai bekal untuk dunia kerja maupun pengembangan diri di bidang teknologi informasi.</p>
-</section>
-<div class="toctree-wrapper compound">
+<section class="tex2jax_ignore mathjax_ignore" id="naive-bayes">
+<h1>Naive Bayes<a class="headerlink" href="#naive-bayes" title="Link to this heading">#</a></h1>
+<section id="tugas">
+<h2>TUGAS<a class="headerlink" href="#tugas" title="Link to this heading">#</a></h2>
+<p>Laporan Proyek: Klasifikasi Naive Bayes menggunakan KNIME dan Python (Sklearn)
+Deskripsi Proyek:
+Proyek ini bertujuan untuk membangun model klasifikasi menggunakan algoritma Gaussian Naive Bayes dari library scikit-learn Python, yang dijalankan di dalam platform KNIME. Dataset yang digunakan adalah dataset IRIS (terlihat dari label kelas seperti Iris-setosa, Iris-versicolor, dan Iris-virginica).
+<img alt="Visualisasi" src="_images/i52.png" /></p>
+<p>Langkah-langkah Pembuatan Workflow</p>
+<ol class="arabic simple">
+<li><p>Membaca Data (CSV Reader)<br>
+<img alt="Visualisasi" src="_images/i53.png" /><br>
+Node: CSV Reader</p></li>
+</ol>
+<p>Fungsi: Mengimpor dataset ke dalam environment KNIME.</p>
+<p>Konfigurasi: File dibaca dari direktori lokal (C:\Users\LENOVO\Documents\IRIS.csv). Pengaturan dibiarkan secara default untuk membaca file teks terstruktur dengan karakter # sebagai penanda komentar jika ada.</p>
+<ol class="arabic simple" start="2">
+<li><p>Membagi Data Latih dan Data Uji (Table Partitioner)<br>
+<img alt="Visualisasi" src="_images/i54.png" /><br>
+Node: Table Partitioner</p></li>
+</ol>
+<p>Fungsi: Membagi dataset utuh menjadi dua bagian: Training Data (Data Latih) dan Testing Data (Data Uji).</p>
+<p>Konfigurasi: Menggunakan metode Relative (%) dengan rasio 70%. Strategi sampling yang digunakan adalah Random, sehingga 70% data akan dialirkan ke port atas (untuk dilatih) dan 30% ke port bawah (untuk diuji).</p>
+<ol class="arabic simple" start="3">
+<li><p>Normalisasi Data Latih (Normalizer)<br>
+<img alt="Visualisasi" src="_images/i55.png" /><br>
+Node: Normalizer</p></li>
+</ol>
+<p>Fungsi: Mengubah skala nilai pada fitur numerik agar berada dalam rentang yang seragam. Ini penting agar tidak ada fitur yang mendominasi hanya karena skala angkanya lebih besar.</p>
+<p>Konfigurasi: Menggunakan metode Min-max normalization dengan rentang nilai dari 0 hingga 1. Node ini memproses data latih dan menghasilkan model normalisasi (ditandai dengan kotak biru pada output) yang menyimpan parameter batas minimum dan maksimum dari data latih.</p>
+<ol class="arabic simple" start="4">
+<li><p>Normalisasi Data Uji (Normalizer Apply)<br>
+Node: Normalizer (Apply)</p></li>
+</ol>
+<p>Fungsi: Menerapkan skala normalisasi yang sama persis dengan data latih ke data uji.</p>
+<p>Konfigurasi: Node ini menerima input model dari Normalizer (jalur biru) dan menerapkannya pada data dari port bawah Table Partitioner. Hal ini merupakan praktik terbaik (best practice) Machine Learning untuk mencegah data leakage (kebocoran informasi).</p>
+<ol class="arabic simple" start="5">
+<li><p>Implementasi Naive Bayes (Python Script)<br>
+Node: Python Script</p></li>
+</ol>
+<p>Fungsi: Mengeksekusi kode Python untuk melatih model algoritma Gaussian Naive Bayes dan melakukan prediksi pada data uji.</p>
+<p>Proses:</p>
+<p>Node menerima 2 input tabel: Data latih (Input 1) dan Data uji yang sudah dinormalisasi (Input 2).</p>
+<p>Fitur (X) diambil dari semua kolom kecuali kolom terakhir, sedangkan target (y) diambil dari kolom terakhir (spesies).</p>
+<p>Model dilatih menggunakan model.fit(X_train, y_train).</p>
+<p>Model melakukan prediksi terhadap X_test menggunakan model.predict(X_test).</p>
+<p>Hasil prediksi ditambahkan sebagai kolom baru bernama prediction pada tabel data uji dan dikeluarkan ke output port.</p>
+<p>Script yang Digunakan:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">knime.scripting.io</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">knio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.naive_bayes</span><span class="w"> </span><span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">classification_report</span>
+
+<span class="c1"># Membaca data latih dan uji dari input port KNIME</span>
+<span class="n">train_df</span> <span class="o">=</span> <span class="n">knio</span><span class="o">.</span><span class="n">input_tables</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+<span class="n">test_df</span> <span class="o">=</span> <span class="n">knio</span><span class="o">.</span><span class="n">input_tables</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+
+<span class="c1"># Memisahkan fitur (X) dan target (y)</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Inisialisasi dan melatih model Naive Bayes</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Melakukan prediksi</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Menyiapkan tabel output dengan kolom prediksi baru</span>
+<span class="n">output_df</span> <span class="o">=</span> <span class="n">test_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">output_df</span><span class="p">[</span><span class="s2">&quot;prediction&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_pred</span>
+
+<span class="c1"># Mengirim data kembali ke KNIME</span>
+<span class="n">knio</span><span class="o">.</span><span class="n">output_tables</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">knio</span><span class="o">.</span><span class="n">Table</span><span class="o">.</span><span class="n">from_pandas</span><span class="p">(</span><span class="n">output_df</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
 </div>
+<ol class="arabic simple" start="6">
+<li><p>Evaluasi Model (Scorer)
+<img alt="Visualisasi" src="_images/i56.png" /><br>
+<img alt="Visualisasi" src="_images/i57.png" />
+Node: Scorer</p></li>
+</ol>
+<p>Fungsi: Membandingkan label kelas asli (species) dengan hasil tebakan model (prediction) untuk menghitung metrik evaluasi.</p>
+<p>Hasil Evaluasi (Berdasarkan Gambar Statistik):</p>
+<p>Akurasi Keseluruhan (Accuracy): 0.956 atau 95.6%</p>
+<p>Cohen’s Kappa: 0.933</p>
+<p>Confusion Matrix:</p>
+<p>Iris-setosa: 16 diprediksi benar, 0 salah. (Precision/Recall: 1.0 / 1.0)</p>
+<p>Iris-versicolor: 16 diprediksi benar, 1 diprediksi salah sebagai virginica. (Recall: 0.941)</p>
+<p>Iris-virginica: 11 diprediksi benar, 1 diprediksi salah sebagai versicolor. (Recall: 0.917)
+Model bekerja dengan sangat baik dan hanya mengalami sedikit kesulitan membedakan antara Versicolor dan Virginica (masing-masing 1 kesalahan klasifikasi).</p>
+<ol class="arabic simple" start="7">
+<li><p>Visualisasi Tabel Hasil (Table View)<br>
+<img alt="Visualisasi" src="_images/i58.png" /><br>
+Node: Table View</p></li>
+</ol>
+<p>Fungsi: Menampilkan output akhir berupa tabel interaktif di mana pengguna bisa melihat langsung deretan data yang sudah dinormalisasi beserta kolom label aktual (species) dan label tebakan mesin (prediction).</p>
+</section>
+<section id="kesimpulan">
+<h2>Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h2>
+<p>Secara keseluruhan, proyek ini sukses mengintegrasikan alur kerja visual KNIME dengan model Gaussian Naive Bayes dari Python, sembari menerapkan langkah pra-pemrosesan yang tepat untuk mencegah kebocoran data (data leakage). Model yang dibangun terbukti sangat andal dengan pencapaian akurasi sebesar 95,6%, di mana kelas Setosa berhasil diidentifikasi dengan sempurna, dan hanya terdapat sangat sedikit kesalahan klasifikasi yang wajar antara Versicolor dan Virginica akibat kemiripan alami fitur keduanya.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -453,14 +542,14 @@ Saat ini saya sedang menempuh semester 4 dan aktif mempelajari berbagai mata kul
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="right-next"
-       href="pertemuan1.html"
-       title="next page">
+    <a class="left-prev"
+       href="uts.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Pertemuan 1</p>
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">UTS</p>
       </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -478,9 +567,14 @@ Saat ini saya sedang menempuh semester 4 dan aktif mempelajari berbagai mata kul
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#informasi-pribadi">Informasi Pribadi</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tentang-saya">Tentang Saya</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Pertemuan 10</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes">Naive Bayes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tugas">TUGAS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
 </ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
