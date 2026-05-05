@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Pertemuan 1 &#8212; Data Mining</title>
+    <title>Pertemuan 10 &#8212; Data Mining</title>
   
   
   
@@ -57,11 +57,10 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'pertemuan1';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pertemuan10';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Pertemuan 2" href="pertemuan2.html" />
-    <link rel="prev" title="Penambangan data" href="intro.html" />
+    <link rel="prev" title="UTS" href="uts.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -180,7 +179,7 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Pertemuan 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pertemuan1.html">Pertemuan 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pertemuan2.html">Pertemuan 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pertemuan3.html">Pertemuan 3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pertemuan4.html">Pertemuan 4</a></li>
@@ -188,7 +187,7 @@
 
 <li class="toctree-l1"><a class="reference internal" href="pertemuan6.html">Pertemuan 6</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uts.html">UTS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pertemuan10.html">Pertemuan 10</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Pertemuan 10</a></li>
 
 </ul>
 
@@ -261,7 +260,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpertemuan1.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpertemuan10.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -291,7 +290,7 @@
       
       
       
-      <li><a href="_sources/pertemuan1.md" target="_blank"
+      <li><a href="_sources/pertemuan10.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -375,7 +374,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Pertemuan 1</h1>
+    <h1>Pertemuan 10</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -385,15 +384,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-penambangan-data-dan-tools-pendukung">Pengertian Penambangan Data dan Tools Pendukung</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-penambangan-data">1. Pengertian Penambangan Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orange">2. Orange</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#knime">3. KNIME</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postgresql">4. PostgreSQL</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mysql">5. MySQL</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Pertemuan 10</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes">Naive Bayes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tugas">TUGAS</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tugas-pertemuan-1">TUGAS PERTEMUAN 1</a></li>
 </ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -404,93 +402,113 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="pertemuan-1">
-<h1>Pertemuan 1<a class="headerlink" href="#pertemuan-1" title="Link to this heading">#</a></h1>
-<section id="pengertian-penambangan-data-dan-tools-pendukung">
-<h2>Pengertian Penambangan Data dan Tools Pendukung<a class="headerlink" href="#pengertian-penambangan-data-dan-tools-pendukung" title="Link to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="pertemuan-10">
+<h1>Pertemuan 10<a class="headerlink" href="#pertemuan-10" title="Link to this heading">#</a></h1>
 </section>
-<section id="pengertian-penambangan-data">
-<h2>1. Pengertian Penambangan Data<a class="headerlink" href="#pengertian-penambangan-data" title="Link to this heading">#</a></h2>
-<p>Penambangan data (Data Mining) adalah proses menggali dan menemukan pola, informasi, atau pengetahuan yang tersembunyi dari sekumpulan data dalam jumlah besar menggunakan teknik statistik, matematika, dan machine learning.</p>
-<p>Tujuan utama penambangan data adalah untuk membantu pengambilan keputusan dengan cara menemukan pola yang sebelumnya tidak diketahui. Proses ini biasanya merupakan bagian dari tahapan yang lebih besar yang disebut Knowledge Discovery in Databases (KDD).</p>
-<p>Contoh penerapan penambangan data:</p>
-<ul class="simple">
-<li><p>Rekomendasi produk pada e-commerce</p></li>
-<li><p>Prediksi penjualan</p></li>
-<li><p>Deteksi penipuan (fraud detection)</p></li>
-<li><p>Analisis perilaku pelanggan</p></li>
-</ul>
+<section class="tex2jax_ignore mathjax_ignore" id="naive-bayes">
+<h1>Naive Bayes<a class="headerlink" href="#naive-bayes" title="Link to this heading">#</a></h1>
+<section id="tugas">
+<h2>TUGAS<a class="headerlink" href="#tugas" title="Link to this heading">#</a></h2>
+<p>Laporan Proyek: Klasifikasi Naive Bayes menggunakan KNIME dan Python (Sklearn)
+Deskripsi Proyek:
+Proyek ini bertujuan untuk membangun model klasifikasi menggunakan algoritma Gaussian Naive Bayes dari library scikit-learn Python, yang dijalankan di dalam platform KNIME. Dataset yang digunakan adalah dataset IRIS (terlihat dari label kelas seperti Iris-setosa, Iris-versicolor, dan Iris-virginica).
+<img alt="Visualisasi" src="_images/i52.png" /></p>
+<p>Langkah-langkah Pembuatan Workflow</p>
+<ol class="arabic simple">
+<li><p>Membaca Data (CSV Reader)<br>
+<img alt="Visualisasi" src="_images/i53.png" /><br>
+Node: CSV Reader</p></li>
+</ol>
+<p>Fungsi: Mengimpor dataset ke dalam environment KNIME.</p>
+<p>Konfigurasi: File dibaca dari direktori lokal (C:\Users\LENOVO\Documents\IRIS.csv). Pengaturan dibiarkan secara default untuk membaca file teks terstruktur dengan karakter # sebagai penanda komentar jika ada.</p>
+<ol class="arabic simple" start="2">
+<li><p>Membagi Data Latih dan Data Uji (Table Partitioner)<br>
+<img alt="Visualisasi" src="_images/i54.png" /><br>
+Node: Table Partitioner</p></li>
+</ol>
+<p>Fungsi: Membagi dataset utuh menjadi dua bagian: Training Data (Data Latih) dan Testing Data (Data Uji).</p>
+<p>Konfigurasi: Menggunakan metode Relative (%) dengan rasio 70%. Strategi sampling yang digunakan adalah Random, sehingga 70% data akan dialirkan ke port atas (untuk dilatih) dan 30% ke port bawah (untuk diuji).</p>
+<ol class="arabic simple" start="3">
+<li><p>Normalisasi Data Latih (Normalizer)<br>
+<img alt="Visualisasi" src="_images/i55.png" /><br>
+Node: Normalizer</p></li>
+</ol>
+<p>Fungsi: Mengubah skala nilai pada fitur numerik agar berada dalam rentang yang seragam. Ini penting agar tidak ada fitur yang mendominasi hanya karena skala angkanya lebih besar.</p>
+<p>Konfigurasi: Menggunakan metode Min-max normalization dengan rentang nilai dari 0 hingga 1. Node ini memproses data latih dan menghasilkan model normalisasi (ditandai dengan kotak biru pada output) yang menyimpan parameter batas minimum dan maksimum dari data latih.</p>
+<ol class="arabic simple" start="4">
+<li><p>Normalisasi Data Uji (Normalizer Apply)<br>
+Node: Normalizer (Apply)</p></li>
+</ol>
+<p>Fungsi: Menerapkan skala normalisasi yang sama persis dengan data latih ke data uji.</p>
+<p>Konfigurasi: Node ini menerima input model dari Normalizer (jalur biru) dan menerapkannya pada data dari port bawah Table Partitioner. Hal ini merupakan praktik terbaik (best practice) Machine Learning untuk mencegah data leakage (kebocoran informasi).</p>
+<ol class="arabic simple" start="5">
+<li><p>Implementasi Naive Bayes (Python Script)<br>
+Node: Python Script</p></li>
+</ol>
+<p>Fungsi: Mengeksekusi kode Python untuk melatih model algoritma Gaussian Naive Bayes dan melakukan prediksi pada data uji.</p>
+<p>Proses:</p>
+<p>Node menerima 2 input tabel: Data latih (Input 1) dan Data uji yang sudah dinormalisasi (Input 2).</p>
+<p>Fitur (X) diambil dari semua kolom kecuali kolom terakhir, sedangkan target (y) diambil dari kolom terakhir (spesies).</p>
+<p>Model dilatih menggunakan model.fit(X_train, y_train).</p>
+<p>Model melakukan prediksi terhadap X_test menggunakan model.predict(X_test).</p>
+<p>Hasil prediksi ditambahkan sebagai kolom baru bernama prediction pada tabel data uji dan dikeluarkan ke output port.</p>
+<p>Script yang Digunakan:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">knime.scripting.io</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">knio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.naive_bayes</span><span class="w"> </span><span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">classification_report</span>
+
+<span class="c1"># Membaca data latih dan uji dari input port KNIME</span>
+<span class="n">train_df</span> <span class="o">=</span> <span class="n">knio</span><span class="o">.</span><span class="n">input_tables</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+<span class="n">test_df</span> <span class="o">=</span> <span class="n">knio</span><span class="o">.</span><span class="n">input_tables</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+
+<span class="c1"># Memisahkan fitur (X) dan target (y)</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Inisialisasi dan melatih model Naive Bayes</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Melakukan prediksi</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Menyiapkan tabel output dengan kolom prediksi baru</span>
+<span class="n">output_df</span> <span class="o">=</span> <span class="n">test_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">output_df</span><span class="p">[</span><span class="s2">&quot;prediction&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_pred</span>
+
+<span class="c1"># Mengirim data kembali ke KNIME</span>
+<span class="n">knio</span><span class="o">.</span><span class="n">output_tables</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">knio</span><span class="o">.</span><span class="n">Table</span><span class="o">.</span><span class="n">from_pandas</span><span class="p">(</span><span class="n">output_df</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>Evaluasi Model (Scorer)
+<img alt="Visualisasi" src="_images/i56.png" /><br>
+<img alt="Visualisasi" src="_images/i57.png" />
+Node: Scorer</p></li>
+</ol>
+<p>Fungsi: Membandingkan label kelas asli (species) dengan hasil tebakan model (prediction) untuk menghitung metrik evaluasi.</p>
+<p>Hasil Evaluasi (Berdasarkan Gambar Statistik):</p>
+<p>Akurasi Keseluruhan (Accuracy): 0.956 atau 95.6%</p>
+<p>Cohen’s Kappa: 0.933</p>
+<p>Confusion Matrix:</p>
+<p>Iris-setosa: 16 diprediksi benar, 0 salah. (Precision/Recall: 1.0 / 1.0)</p>
+<p>Iris-versicolor: 16 diprediksi benar, 1 diprediksi salah sebagai virginica. (Recall: 0.941)</p>
+<p>Iris-virginica: 11 diprediksi benar, 1 diprediksi salah sebagai versicolor. (Recall: 0.917)
+Model bekerja dengan sangat baik dan hanya mengalami sedikit kesulitan membedakan antara Versicolor dan Virginica (masing-masing 1 kesalahan klasifikasi).</p>
+<ol class="arabic simple" start="7">
+<li><p>Visualisasi Tabel Hasil (Table View)<br>
+<img alt="Visualisasi" src="_images/i58.png" /><br>
+Node: Table View</p></li>
+</ol>
+<p>Fungsi: Menampilkan output akhir berupa tabel interaktif di mana pengguna bisa melihat langsung deretan data yang sudah dinormalisasi beserta kolom label aktual (species) dan label tebakan mesin (prediction).</p>
 </section>
-<hr class="docutils" />
-<section id="orange">
-<h2>2. Orange<a class="headerlink" href="#orange" title="Link to this heading">#</a></h2>
-<p>Orange adalah software open-source berbasis visual programming yang digunakan untuk analisis data dan machine learning.</p>
-<p>Kelebihan Orange:</p>
-<ul class="simple">
-<li><p>Antarmuka drag-and-drop (mudah digunakan)</p></li>
-<li><p>Tidak perlu banyak coding</p></li>
-<li><p>Cocok untuk pembelajaran data mining</p></li>
-<li><p>Menyediakan banyak widget untuk klasifikasi, clustering, dan visualisasi</p></li>
-</ul>
-<p>Orange sering digunakan dalam pembelajaran karena memudahkan pengguna memahami alur proses data mining secara visual.</p>
-</section>
-<hr class="docutils" />
-<section id="knime">
-<h2>3. KNIME<a class="headerlink" href="#knime" title="Link to this heading">#</a></h2>
-<p>KNIME (Konstanz Information Miner) adalah platform open-source untuk analisis data, pelaporan, dan integrasi data.</p>
-<p>Fitur utama KNIME:</p>
-<ul class="simple">
-<li><p>Workflow berbasis node (visual)</p></li>
-<li><p>Mendukung integrasi dengan Python dan R</p></li>
-<li><p>Digunakan untuk data mining dan machine learning</p></li>
-<li><p>Cocok untuk analisis data skala besar</p></li>
-</ul>
-<p>KNIME banyak digunakan di industri karena fleksibel dan mendukung berbagai sumber data.</p>
-</section>
-<hr class="docutils" />
-<section id="postgresql">
-<h2>4. PostgreSQL<a class="headerlink" href="#postgresql" title="Link to this heading">#</a></h2>
-<p>PostgreSQL adalah sistem manajemen basis data relasional (RDBMS) yang bersifat open-source.</p>
-<p>Karakteristik PostgreSQL:</p>
-<ul class="simple">
-<li><p>Mendukung query SQL standar</p></li>
-<li><p>Stabil dan aman</p></li>
-<li><p>Cocok untuk aplikasi skala besar</p></li>
-<li><p>Mendukung tipe data kompleks</p></li>
-</ul>
-<p>PostgreSQL sering digunakan untuk menyimpan dan mengelola data sebelum dilakukan proses penambangan data.</p>
-</section>
-<hr class="docutils" />
-<section id="mysql">
-<h2>5. MySQL<a class="headerlink" href="#mysql" title="Link to this heading">#</a></h2>
-<p>MySQL adalah sistem manajemen basis data relasional yang populer dan banyak digunakan dalam aplikasi web.</p>
-<p>Kelebihan MySQL:</p>
-<ul class="simple">
-<li><p>Cepat dan ringan</p></li>
-<li><p>Mudah digunakan</p></li>
-<li><p>Banyak didukung oleh hosting dan framework web</p></li>
-<li><p>Cocok untuk aplikasi skala kecil hingga menengah</p></li>
-</ul>
-<p>MySQL sering digunakan sebagai tempat penyimpanan data yang nantinya dapat dianalisis menggunakan tools data mining seperti Orange dan KNIME.</p>
-</section>
-<hr class="docutils" />
 <section id="kesimpulan">
 <h2>Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h2>
-<p>Penambangan data merupakan proses penting dalam menemukan pola dan informasi dari data dalam jumlah besar. Tools seperti Orange dan KNIME membantu dalam proses analisis secara visual, sedangkan PostgreSQL dan MySQL digunakan sebagai sistem penyimpanan data sebelum dianalisis.</p>
-</section>
-<section id="tugas-pertemuan-1">
-<h2>TUGAS PERTEMUAN 1<a class="headerlink" href="#tugas-pertemuan-1" title="Link to this heading">#</a></h2>
-<p>Bawa Laptop<br>
-Masuk Jam 7<br>
-Tidak masuk 4 kali tanpa alas an : D<br>
-Harus punya akun github<br>
-Kalian buat repository : Pendata<br>
-Install jupyter book ( untuk membuat catatan dan tugas pendata)<br>
-Install knime dan orange (tools data mining)<br>
-Install postgresql dan mysql (Access macam data)<br>
-Memasukkan data iris flower ke dalam dua database diatas<br>
-<a class="reference external" href="https://www.kaggle.com/datasets/arshid/iris-flower-dataset">https://www.kaggle.com/datasets/arshid/iris-flower-dataset</a><br></p>
-<p>Menilai kesiapan diatas<br></p>
+<p>Secara keseluruhan, proyek ini sukses mengintegrasikan alur kerja visual KNIME dengan model Gaussian Naive Bayes dari Python, sembari menerapkan langkah pra-pemrosesan yang tepat untuk mencegah kebocoran data (data leakage). Model yang dibangun terbukti sangat andal dengan pencapaian akurasi sebesar 95,6%, di mana kelas Setosa berhasil diidentifikasi dengan sempurna, dan hanya terdapat sangat sedikit kesalahan klasifikasi yang wajar antara Versicolor dan Virginica akibat kemiripan alami fitur keduanya.</p>
 </section>
 </section>
 
@@ -525,22 +543,13 @@ Memasukkan data iris flower ke dalam dua database diatas<br>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="intro.html"
+       href="uts.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Penambangan data</p>
+        <p class="prev-next-title">UTS</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="pertemuan2.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Pertemuan 2</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -558,15 +567,14 @@ Memasukkan data iris flower ke dalam dua database diatas<br>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-penambangan-data-dan-tools-pendukung">Pengertian Penambangan Data dan Tools Pendukung</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-penambangan-data">1. Pengertian Penambangan Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orange">2. Orange</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#knime">3. KNIME</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postgresql">4. PostgreSQL</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mysql">5. MySQL</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Pertemuan 10</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes">Naive Bayes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tugas">TUGAS</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tugas-pertemuan-1">TUGAS PERTEMUAN 1</a></li>
 </ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
