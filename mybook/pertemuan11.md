@@ -54,7 +54,6 @@ $GainRatio(S, A) = \frac{Gain(S, A)}{SplitInfo(S, A)}$
 
 ## TUGAS Langkah-Langkah Membangun Decision Tree di KNIME
 *(Studi Kasus: Dataset Play Tennis)*
-[klik untuk unduh training_examples.xls](asset/tm11/training_examples.xlsx)
 Dokumen ini menjelaskan alur kerja (*workflow*) pembuatan model **Decision Tree** menggunakan KNIME berdasarkan hasil tangkapan layar yang telah dibuat. Setiap langkah akan dijelaskan prosesnya ("Apa") dan alasannya ("Kenapa").
 
 ---
@@ -63,6 +62,8 @@ Dokumen ini menjelaskan alur kerja (*workflow*) pembuatan model **Decision Tree*
 ### 1. Membaca Dataset (Node: `Excel Reader`)
 <br>![Visualisasi](asset/tm11/i60.png)<br>
 
+[klik untuk unduh training_examples.xls](asset/tm11/training_examples.xlsx)
+<br>
  **Apa yang dilakukan:**
 Menghubungkan node `Excel Reader` ke file `training_examples.xls` yang ada di dalam komputer (kolom *Outlook, Temp, Humidity, Wind, Play Tennis*).
 <br>![Visualisasi](asset/tm11/i66.png)<br>
