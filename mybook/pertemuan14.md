@@ -1,4 +1,4 @@
-# pertemuan 14
+# pertemuan 14 
 # 1. Pengambilan Data NO₂ dari Sentinel-5P Menggunakan OpenEO
 
 Pada tahap ini dilakukan koneksi ke platform OpenEO Copernicus Data Space, menentukan Area of Interest (AOI) Kabupaten Sampang, kemudian mengambil data konsentrasi NO₂ dari citra Sentinel-5P.
