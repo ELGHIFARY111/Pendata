@@ -1,7 +1,4 @@
-Berikut format **Markdown (.md)** yang sesuai dengan notebook dan setiap bagian dipisahkan berdasarkan `# %%`. Kode ditampilkan menggunakan blok ` ```python ` dan diikuti penjelasan singkat.
-
----
-
+# pertemuan 14 
 # 1. Pengambilan Data NO₂ dari Sentinel-5P Menggunakan OpenEO
 
 Pada tahap ini dilakukan koneksi ke platform OpenEO Copernicus Data Space, menentukan Area of Interest (AOI) Kabupaten Sampang, kemudian mengambil data konsentrasi NO₂ dari citra Sentinel-5P.
